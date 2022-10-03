@@ -170,9 +170,13 @@ app.set('view engine', '.hbs');
 
 const HTTP_PORT = process.env.PORT || 8080;
 
-function onHttpStart() {
-  console.log("Express http server listening on: " + HTTP_PORT);
-}
+app.listen(HTTP_PORT, err => {
+
+  if (err) console.log(err);
+
+  else console.log(`=> Started at http://localhost:${HTTP_PORT}`);
+
+});
 
 app.use(express.static('public'));
 
