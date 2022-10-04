@@ -7,12 +7,14 @@ const clientSessions = require("client-sessions");
 
 const urlencodedParser = bodyParser.urlencoded({ extended: true });
 
+
 app.use(clientSessions({
   cookieName: "session", 
   secret: "3XPLOIT", 
   duration: 2 * 60 * 1000, 
   activeDuration: 1000 * 60
 }));
+
 
 app.use(express.urlencoded({ extended: false }));
 
@@ -31,7 +33,7 @@ function ensureLogin(req, res, next) {
 };
 
 app.get("/", (req, res) => {
-    res.render('main', {
+    res.render('home', {
       layout: "main"
     })
   });
