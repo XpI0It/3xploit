@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap');
-*{
-  box-sizing: border-box;
-}
+
 #highlight {
     color: #35FF9E;
 }
@@ -176,6 +174,7 @@ div .submit {
     border-radius: 45%;
     background: rgba(20, 20, 20, 1);
     animation: animate 5s linear infinite;
+    border: 0;
   }
   
   .submit button .liquid::after {
