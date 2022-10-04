@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- saved from url=(0119)https://learn.senecacollege.ca/bbcswebdav/pid-12649685-dt-content-rid-75277863_2/courses/WEB322NGG.06135.2221/home.html -->
+<html lang="en">
+{{!--
+//bootstrap issue figure it out later
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- from https://getbootstrap.com/docs/3.3/getting-started/#download-->
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <title>Home</title>
+  <link href="chrome-extension://idpbkophnbfijcnlffdmmppgnncgappc/css/content.css" rel="stylesheet" type="text/css">
+</head> --}}
+
+<head>
+  {{!-- copied from the web322 course notes --}}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <!-- it is common to place the .js files at the end of the <body> tag as well -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+  <!-- ... -->
+  <title>Home</title>
+  <link href="chrome-extension://idpbkophnbfijcnlffdmmppgnncgappc/css/content.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body class="vsc-initialized">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- <span class="navbar-brand" href="#">WEB322 - Patrick Crawford</span> -->
+        <span class="navbar-brand" href="#">WEB322 - Lihan HuangTang</span>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <ul class="nav navbar-nav">
+
+          <!--<li class="active"><a href="https://learn.senecacollege.ca/">Home</a></li>-->
+          {{#navLink "/"}}Home{{/navLink}}
+          {{#navLink "/about"}}About{{/navLink}}
+          {{!-- {{#navLink "/employees/add"}}Add Employee{{/navLink}} moved to employees.hbs --}}
+          {{!-- {{#navLink "/images/add"}}Add Image{{/navLink}} moved to images.hbs--}}
+        </ul>
+
+        {{#if session.user}}
+        <form class="navbar-form navbar-right">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="userMenu" name="userMenu"
+              data-toggle="dropdown">
+              <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{session.user.userName}}&nbsp;&nbsp;<span
+                class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="userMenu">
+              <li><a href="/userHistory">User History</a></li>
+              <li><a href="/logout">Log Out</a></li>
+            </ul>
+          </div>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          {{#navLink "/images"}}Images{{/navLink}}
+          {{#navLink "/employees"}}Employees{{/navLink}}
+          {{#navLink "/departments"}}Departments{{/navLink}}
+        </ul>
+        {{else}}
+        <form class="navbar-form navbar-right">
+          <a href="/register" class="btn btn-success"><span
+              class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Register</a>
+          <a href="/login" class="btn btn-primary"><span
+              class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Log In</a>
+        </form>
+        {{/if}}
+
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div class="container">
+    {{{body}}}
+  </div>
+
+  <!-- Latest compiled and minified jQuery 3.2.1 JavaScript -->
+  <script src="./home_files/jquery-3.2.1.min.js.download"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified Bootstrap 3.3.7 JavaScript -->
+  <script src="./home_files/bootstrap.min.js.download"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+</body>
+<div></div>
+
+</html>
