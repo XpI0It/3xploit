@@ -1,23 +1,62 @@
-//for cross origin resource sharing
-const cors = require('cors');
-
 const express = require('express');
-const bodyParser = require('body-parser');
-
-//express app
+const exphbs = require('express-handlebars');
 const app = express();
 
-//middlewares
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+//Static Files (CSS, Images)
+app.use('/static', express.static(`${__dirname}/static`));
 
-const port = process.env.PORT || 3001;
+// data parsing middleware
+// Parse application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
-//routes
-// get home
-app.get('/', (req, res) => {
-	res.send('Hello World!');
+// Handlebars middleware
+app.set('view engine', '.hbs');
+app.engine(
+	'.hbs',
+	exphbs({
+		extname: '.hbs',
+		defaultLayout: 'main',
+		helpers: {
+			// custom helper to use conditional css files depending on the page
+			when: function (operand_1, operator, operand_2, options) {
+				var operators = {
+						eq: function (l, r) {
+							return l == r;
+						},
+						noteq: function (l, r) {
+							return l != r;
+						},
+						gt: function (l, r) {
+							return Number(l) > Number(r);
+						},
+						or: function (l, r) {
+							return l || r;
+						},
+						and: function (l, r) {
+							return l && r;
+						},
+						'%': function (l, r) {
+							return l % r === 0;
+						}
+					},
+					result = operators[operator](operand_1, operand_2);
+
+				if (result) return options.fn(this);
+				else return options.inverse(this);
+			}
+		}
+	})
+);
+
+// main routes
+app.use('/', require('./routes/main'));
+// Login/Register form routes
+app.use('/users', require('./routes/users'));
+
+//err handling
+app.use((req, res) => {
+	res.status(404).send('<i>something broke :/</i>');
 });
 
 //port
