@@ -1,20 +1,27 @@
 {
-  "name": "3xploit",
+  "name": "mealdel",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Batuhan Ipci",
   "license": "ISC",
   "dependencies": {
-    "client-sessions": "^0.8.0",
-    "cors": "^2.8.5",
-    "express": "^4.18.1",
-    "express-handlebars": "^6.0.6",
-    "nodemon": "^2.0.20"
-  }
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "express-session": "^1.17.2",
+    "nodemon": "^2.0.13"
+  },
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/batunpc/steakhouse-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/batunpc/steakhouse-website/issues"
+  },
+  "homepage": "https://github.com/batunpc/steakhouse-website#readme",
+  "description": "website created by Batuhan Ipci"
 }
