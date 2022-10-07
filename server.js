@@ -1,6 +1,27 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const app = express();
+const mongoose = require('mongoose');
+
+// database
+const database = (module.exports = () => {
+	const connectionParameters = {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	};
+
+	try {
+		mongoose.connect(
+			'mongodb+srv://PRJ:PRJ666@cluster0.gqgjk6y.mongodb.net/?retryWrites=true&w=majority'
+		),
+			connectionParameters;
+		console.log('Database connection successful');
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+database();
 
 //Static Files (CSS, Images)
 app.use('/static', express.static(`${__dirname}/static`));
@@ -16,36 +37,7 @@ app.engine(
 	'.hbs',
 	exphbs({
 		extname: '.hbs',
-		defaultLayout: 'main',
-		helpers: {
-			// custom helper to use conditional css files depending on the page
-			when: function (operand_1, operator, operand_2, options) {
-				var operators = {
-						eq: function (l, r) {
-							return l == r;
-						},
-						noteq: function (l, r) {
-							return l != r;
-						},
-						gt: function (l, r) {
-							return Number(l) > Number(r);
-						},
-						or: function (l, r) {
-							return l || r;
-						},
-						and: function (l, r) {
-							return l && r;
-						},
-						'%': function (l, r) {
-							return l % r === 0;
-						}
-					},
-					result = operators[operator](operand_1, operand_2);
-
-				if (result) return options.fn(this);
-				else return options.inverse(this);
-			}
-		}
+		defaultLayout: 'main'
 	})
 );
 
