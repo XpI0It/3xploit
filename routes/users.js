@@ -26,7 +26,7 @@ router.post('/login', async (req, res) => {
 		user.findOne({ $and: [{ email: email }, { password: password }] }).then(
 			user => {
 				if (user != null) {
-					res.redirect('/');
+					res.redirect('/game/3xploit-modules');
 				} else {
 					res.render('client/login', {
 						error: 'Invalid username or password',
@@ -75,7 +75,7 @@ router.post('/register', async (req, res) => {
 		try {
 			await newUser.save().then(mssg => {
 				console.log('User registered successfully');
-				res.redirect('/');
+				res.redirect('/game/3xploit-modules');
 			});
 		} catch (e) {
 			console.log(e);
