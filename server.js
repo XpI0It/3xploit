@@ -45,6 +45,7 @@ app.engine(
 app.use('/', require('./routes/main'));
 // Login/Register form routes
 app.use('/users', require('./routes/users'));
+app.use('/game', require('./routes/game'));
 
 //err handling
 app.use((req, res) => {

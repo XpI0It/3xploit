@@ -1,5 +1,4 @@
 const express = require('express');
-const { db } = require('../schemas/UserSchema');
 const router = express.Router();
 const user = require('../schemas/UserSchema');
 

@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  background-color:#000;
+  
+  display:grid;
+  place-items:center;
+}
+img {
+  width: 30%;
+  height: 100%;
+  object-fit:cover;
+  
+  -webkit-box-reflect:below 2px linear-gradient(transparent, transparent, #0004);
+  
+  transform-origin:center;
+  transform:perspective(800px) rotateY(25deg);
+  transition:0.5s;
+}
+.modules {
+  max-width:900px;
+  max-height:350px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:120px;
+  
+}
+.modules:hover img {
+  opacity:0.3;
+}
+.modules img:hover {
+  transform:perspective(800px)       rotateY(0deg);
+  opacity:1;
+}
+
+.module {
+  width: 100%;
+  height: 100%;
+  background-color:#fff;
+  border-radius:10px;
+  box-shadow:0 0 20px #0004;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  transition:0.5s;
+}
