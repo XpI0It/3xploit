@@ -1,10 +1,13 @@
 <div class="form">
 
   {{#if error class="error"}}
-  <div>
-    <span>{{error}}</span>
+  <div class="form-dsp-error">
+    {{!-- add error icon --}}
+    <i class="fa fa-xmark"></i>
+    <span class="fa fa-error">{{error}}</span>
   </div>
   {{/if}}
+
 
   <div class="title">
     L<span id="highlight">o</span>gin
@@ -22,7 +25,6 @@
       <div class="cut cut-short"></div>
       <label for="lastname" class="placeholder">Password</label>
     </div>
-
 
     <div class="submit">
       <button type="submit" class="submit">
