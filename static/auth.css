@@ -114,16 +114,19 @@ body {
 .submit {
     cursor: pointer;
     height: 50px;
-    margin-top: 30px;
+    margin-top: 15px;
     outline: 0;
     width: 100%;
     /* center */
     display: flex;
     justify-content: center;
     align-items: center;
+    /* set border */
+    
+
   }
 
- .submit a {
+ .submit button {
     position: relative;
     padding: 20px 50px;
     display: block;
@@ -132,18 +135,24 @@ body {
     width: 200px;
     overflow: hidden;
     border-radius: 40px;
+    border: 1px solid #15172b;
   }
   
-  .submit a span {
+  .submit button span {
     position: relative;
     color: #35FF9E;
     font-size: 20px;
     font-family: 'Fredoka', sans-serif;
-    letter-spacing: 6px;
+    letter-spacing: 3px;
     z-index: 1;
+    /* center span */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1px;
   }
   
-  a .liquid {
+  button .liquid {
     position: absolute;
     top: -80px;
     left: 0;
@@ -154,8 +163,8 @@ body {
     transition: .5s;
   }
   
-  a .liquid::after,
-  a .liquid::before {
+  button .liquid::after,
+  button .liquid::before {
     content: '';
     width: 200%;
     height: 200%;
@@ -166,20 +175,20 @@ body {
     background: #000;
   }
   
-  a .liquid::before {
+  button .liquid::before {
     
     border-radius: 45%;
     background: rgba(20, 20, 20, 1);
     animation: animate 5s linear infinite;
   }
   
-  a .liquid::after {
+  button .liquid::after {
     border-radius: 40%;
     background: rgba(20, 20, 20, .5);
     animation: animate 10s linear infinite;
   }
   
-  a:hover .liquid{
+  button:hover .liquid{
     top: -100px;
   }
   
