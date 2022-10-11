@@ -13,6 +13,30 @@ body{
   background: #131313;
 }
 
+.banner{
+    position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  overflow: hidden;
+}
+.banner-text{
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #35FF9E;
+  text-align: center;
+  /* all caps */
+  text-transform: uppercase;
+}
+
+.banner-text h1{
+  font-size: 5rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
 .container{
   position: relative;
   display: flex;
@@ -53,13 +77,14 @@ body{
 }
 
 .container .card3:before{
+  background: #a17cf1;
+}
+
+.container .card4:before{
   background: #b51c7b;
 }
 
 
-.container .card:hover:before{
-  clip-path: circle(300px at 80% -20%);
-}
 
 .container .card:after{
   content: '3XPL>IT';
@@ -92,7 +117,7 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 180px;
+  width: 200px;
 }
 
 #icon1{
@@ -104,8 +129,17 @@ body{
 }
 
 #icon3{
-  transform: translate(-50%, -50%) rotate(40deg);
+  transform: translate(-50%, -50%) rotate(0deg);
 }
+
+#icon3{
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+#icon4{
+  transform: translate(-50%, -50%) rotate(20deg);
+}
+
 .container .card .contentBx{
   position: absolute;
   bottom: 0;
@@ -133,7 +167,7 @@ body{
   justify-content: center;
   align-items: center;
   padding: 8px 20px;
-  transition: 0.5s;opacity: 0;
+  transition: 0.3s;opacity: 0;
   visibility: hidden;
   padding-top: 0;
   padding-bottom: 0;
@@ -143,7 +177,7 @@ body{
 .container .card:hover .contentBx .desc{
   opacity: 1;
   visibility: visible;
-  transition-delay: 0.5s;
+  transition-delay: 0.1s;
 }
 
 .container .card .contentBx a{
@@ -157,13 +191,12 @@ body{
   color: #111;
   opacity: 0;
   transform: translateY(50px);
-  transition: 0.5s;
+  transition: 0.4s;
   margin-top: 0;
 }
 
 .container .card:hover .contentBx a{
   opacity: 1;
   transform: translateY(0px);
-  transition-delay: 0.75s;
-  
+  transition-delay: 0.4s;
 }
