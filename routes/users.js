@@ -53,10 +53,22 @@ router.post('/register', async (req, res) => {
 			title: 'Register',
 			style: 'auth.css'
 		});
-	} else if (await isUserExisting(email)) {
-		res.render('client/register', {
-			error: 'This email is already registered',
-			title: 'Register',
+
+	}
+	else if(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email) == false)
+	{
+		res.render("client/register", {
+			error: "Please enter valid email address !!",
+			title: "Register",
+			style: 'auth.css'
+		});
+	}
+	else if(await isUserExisting(email))
+	{
+		res.render("client/register", {
+			error: "Email already exists !!",
+			title: "Register",
+
 			style: 'auth.css'
 		});
 	} else if (await isUserNameTaken(username)) {
