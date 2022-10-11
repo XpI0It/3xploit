@@ -59,7 +59,7 @@ router.post('/register', async (req, res) => {
 		) == false
 	) {
 		res.render('client/register', {
-			error: 'Please enter valid email address !!',
+			error: 'Entered email address is not valid',
 			title: 'Register',
 			style: 'auth.css'
 		});
