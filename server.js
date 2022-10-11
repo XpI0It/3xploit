@@ -25,6 +25,8 @@ database();
 
 //Static Files (CSS, Images)
 app.use('/static', express.static(`${__dirname}/static`));
+// scripts (JS)
+app.use('/scripts', express.static(`${__dirname}/scripts`));
 
 // data parsing middleware
 // Parse application/x-www-form-urlencoded

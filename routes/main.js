@@ -7,7 +7,8 @@ router.get('/', (req, res) => {
 		layout: 'main',
 		title: 'Home',
 		// custom css file for this page
-		style: 'style.css'
+		style: 'style.css',
+		script: 'scrolldown.js'
 	});
 });
 
