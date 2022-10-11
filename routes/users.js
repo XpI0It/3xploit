@@ -1,8 +1,6 @@
 const express = require('express');
-const { db } = require('../schemas/UserSchema');
 const router = express.Router();
 const user = require('../schemas/UserSchema');
-
 
 router.get('/login', (req, res) => {
 	res.render('client/login', {
@@ -19,44 +17,43 @@ router.get('/register', (req, res) => {
 });
 
 // Post method for login form
-router.post("/login", async(req, res) => {
+router.post('/login', async (req, res) => {
 	// Accessing data from body
 	var email = req.body.email;
 	var password = req.body.password;
 
-	try{
-		 user.findOne({$and: [{email:email}, {password:password}]})
-		 .then((user) => {
-			if(user != null)
-			{
-				res.redirect("/");
+	try {
+		user.findOne({ $and: [{ email: email }, { password: password }] }).then(
+			user => {
+				if (user != null) {
+					res.redirect('/game/3xploit-modules');
+				} else {
+					res.render('client/login', {
+						error: 'Invalid username or password',
+						title: 'Login',
+						style: 'auth.css'
+					});
+				}
 			}
-			else
-			{
-				res.render("client/login", {
-					error: "Invalid username or password", 
-					title: 'Login',
-					style: 'auth.css'
-				});
-			}
-		});
+		);
+	} catch (e) {
+		console.log(e);
 	}
-	catch(e) {console.log(e);}
 });
 
 // Post method for registration form
-router.post("/register", async(req, res) => {
+router.post('/register', async (req, res) => {
 	var email = req.body.email;
 	var password = req.body.password;
 	var username = req.body.username;
 
-	if(checkNullOrEmpty(email, username, password)) 
-	{
-		res.render("client/register", {
-			error: "Please enter all fields !!",
-			title: "Register",
-			style: "auth.css"
+	if (checkNullOrEmpty(email, username, password)) {
+		res.render('client/register', {
+			error: 'Enter all the required fields below',
+			title: 'Register',
+			style: 'auth.css'
 		});
+
 	}
 	else if(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email) == false)
 	{
@@ -71,67 +68,58 @@ router.post("/register", async(req, res) => {
 		res.render("client/register", {
 			error: "Email already exists !!",
 			title: "Register",
+
 			style: 'auth.css'
 		});
-	}
-	else if(await isUserNameTaken(username))
-	{
-		res.render("client/register", {
-			error: "Username already taken !!",
-			title: "Register",
+	} else if (await isUserNameTaken(username)) {
+		res.render('client/register', {
+			error: 'This username is already taken',
+			title: 'Register',
 			style: 'auth.css'
 		});
-	}
-	else 
-	{
+	} else {
 		var newUser = new user({
 			email: email,
 			username: username,
 			password: password
 		});
-	
-		try{
-			await newUser.save()
-			.then((mssg) => {
-				console.log("User saved successfully !!");
-				res.redirect("/");
+
+		try {
+			await newUser.save().then(mssg => {
+				console.log('User registered successfully');
+				res.redirect('/game/3xploit-modules');
 			});
+		} catch (e) {
+			console.log(e);
 		}
-		catch(e){ console.log(e);}
 	}
 });
 
 // checks if form data is valid or not
-function checkNullOrEmpty(mail, username, password)
-{
+function checkNullOrEmpty(mail, username, password) {
 	// check if data is null or empty
-    var check1 = (mail === "" || mail === undefined);
-    var check2 = (username === "" || username === undefined);
-    var check3 = (password === "" || password === undefined);
+	var check1 = mail === '' || mail === undefined;
+	var check2 = username === '' || username === undefined;
+	var check3 = password === '' || password === undefined;
 
-	if(check1 || check2 || check3) return true;
+	if (check1 || check2 || check3) return true;
 	else return false;
-	
 }
 
 // checks if email in database already exists or not
-async function isUserExisting(email)
-{
-	return user.findOne({ email: email})
-	.then((user) => {
-		if(user != null) return true;
+async function isUserExisting(email) {
+	return user.findOne({ email: email }).then(user => {
+		if (user != null) return true;
 		else return false;
 	});
 }
 
 // checks if username is already taken by someone or not
-async function isUserNameTaken(username)
-{
-	return user.findOne({username: username})
-	.then((user) => {
-		if(user != null) return true;
+async function isUserNameTaken(username) {
+	return user.findOne({ username: username }).then(user => {
+		if (user != null) return true;
 		else return false;
-	})
+	});
 }
 
 module.exports = router;

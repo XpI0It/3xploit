@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap');
-*{
-  box-sizing: border-box;
-}
+
 #highlight {
     color: #35FF9E;
 }
@@ -97,7 +95,7 @@ body {
   
   .input:focus ~ .placeholder,
   .input:not(:placeholder-shown) ~ .placeholder {
-    transform: translateY(-30px) translateX(10px) scale(0.75);
+    transform: translateY(-30px) translateX(5px) scale(0.75);
   }
   
   .input:not(:placeholder-shown) ~ .placeholder {
@@ -111,7 +109,7 @@ body {
 
   
 /* == BUTTON == */
-.submit {
+div .submit {
     cursor: pointer;
     height: 50px;
     margin-top: 15px;
@@ -121,9 +119,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* set border */
-    
-
   }
 
  .submit button {
@@ -135,15 +130,17 @@ body {
     width: 200px;
     overflow: hidden;
     border-radius: 40px;
+    cursor: pointer;
+    /* button border */
     border: 1px solid #15172b;
   }
   
   .submit button span {
     position: relative;
     color: #35FF9E;
-    font-size: 20px;
+    font-size: 17px;
     font-family: 'Fredoka', sans-serif;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     z-index: 1;
     /* center span */
     display: flex;
@@ -152,7 +149,11 @@ body {
     line-height: 1px;
   }
   
+
+
+
   button .liquid {
+
     position: absolute;
     top: -80px;
     left: 0;
@@ -161,10 +162,13 @@ body {
     background: #4f36dd;
     box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
     transition: .5s;
+    border: 0
   }
   
+
   button .liquid::after,
   button .liquid::before {
+
     content: '';
     width: 200%;
     height: 200%;
@@ -173,23 +177,40 @@ body {
     left: 50%;
     transform: translate(-50%, -75%);
     background: #000;
+    border: 0
   }
   
+
+
   button .liquid::before {
-    
+
     border-radius: 45%;
     background: rgba(20, 20, 20, 1);
     animation: animate 5s linear infinite;
+    border: 0;
   }
   
+
   button .liquid::after {
+
     border-radius: 40%;
     background: rgba(20, 20, 20, .5);
     animation: animate 10s linear infinite;
+    border: 0;
   }
   
+
+
+
   button:hover .liquid{
+
     top: -100px;
+  }
+  /* onclick */
+  .submit button:active {
+    /* press effect */
+    transform: scale(.98);
+    
   }
   
   @keyframes animate {
@@ -232,7 +253,8 @@ input:-webkit-autofill{
 .have-account a{
     color: #35FF9E;
     text-decoration: none;
-    padding: 5px 7px;
+    padding: 5px 10px;
+    text-decoration: underline;
 }   
 
 .have-account a:hover{
@@ -243,3 +265,45 @@ input:-webkit-autofill{
 
 
 
+
+
+/* === Error displayer === */
+
+.form-dsp-error{
+    color: #fff;
+    font-size: 14px;
+    margin-top: 20px;
+    font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight:50;
+    /* center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* error border */
+    border: 1px solid #dc2f55;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.form-dsp-error i{
+  color: #dc2f55;
+  font-size: larger;
+
+}
+
+.form-dsp-error span {
+  /* cool red error */
+  color: #dc2f55;
+  font-size: 15px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 50;
+  /* center */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1px;
+  /* make it bold */
+  font-weight: 600;
+  /* add a little space */
+  padding: 0 5px;
+}

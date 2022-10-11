@@ -1,8 +1,10 @@
 <div class="form">
 
   {{#if error class="error"}}
-  <div>
-    <span>{{error}}</span>
+  <div class="form-dsp-error">
+    {{!-- add error icon --}}
+    <i class="fa fa-xmark"></i>
+    <span class="fa fa-error">{{error}}</span>
   </div>
   {{/if}}
 
@@ -36,6 +38,7 @@
       </button>
     </div>
   </form>
+
 
   <div class="have-account">
     Already have an account?
