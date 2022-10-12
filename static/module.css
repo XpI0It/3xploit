@@ -14,15 +14,15 @@ body{
 }
 
 .banner{
-    position: absolute;
-  width: 100%;
-  height: 100vh;
+  position: absolute;
+  min-width: 90%;
+  min-height: 90%;
   background-size: cover;
   overflow: hidden;
 }
 .banner-text{
   position: absolute;
-  top: 15%;
+  top: 5%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #35FF9E;
@@ -43,18 +43,16 @@ body{
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
-
+  gap: 4rem;
 }
 
 .container .card{
   position: relative;
-  width: 320px;
-  height: 450px;
+  min-width: 150%;
+  height: 420px;
   background: #232323;
   border-radius: 20px;
-  overflow: hidden;
-  
+  overflow: hidden; 
 }
 
 .container .card:before{
@@ -67,6 +65,10 @@ body{
   background: #9bdc28;
   clip-path: circle(150px at 80% 20%);
   transition: 0.5s ease-in-out;
+}
+
+.container .card:hover:before{
+  clip-path: circle(300px at 80% -20%);
 }
 
 .container .card1:before{
@@ -84,8 +86,6 @@ body{
 .container .card4:before{
   background: #b51c7b;
 }
-
-
 
 .container .card:after{
   content: '3XPL>IT';
@@ -118,7 +118,7 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200px;
+  width: 180px;
 }
 
 #icon1{
@@ -144,7 +144,7 @@ body{
 .container .card .contentBx{
   position: absolute;
   bottom: 0;
-  width: 100%;
+  max-width: 100%;
   height: 100px;
   text-align: center;
   transition: 1s;
@@ -152,7 +152,8 @@ body{
 }
 
 .container .card:hover .contentBx{
-  height: 240px;
+  /* height: 240px; */
+  height: 50%;
 }
 
 .container .card .contentBx h2{
