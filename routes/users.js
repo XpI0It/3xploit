@@ -39,6 +39,8 @@ router.post('/login', async (req, res) => {
 	} catch (e) {
 		console.log(e);
 	}
+
+	
 });
 
 // Post method for registration form

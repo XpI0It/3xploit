@@ -1,0 +1,57 @@
+<div class="form">
+
+ <h2>
+    {{#if score}}
+        Score: {{score}}
+    {{else}}
+        Score: 0
+    {{/if}}
+    
+ </h2>
+
+
+  <div class="title">
+    <span id="highlight">{{body.questionTitle}}</span>
+  </div>
+
+  <form action="/game/submit" method="POST">
+    
+    {{#each body.options}}
+      <div class="input-container ic1">
+      <input id="op1" name="option" type="radio" value={{@index}}/><label >{{this}}</label>
+      <div class="cut cut-short"></div>
+    </div>
+    {{/each}}
+    
+    {{!-- <div class="input-container ic1">
+      <input id="op1" name="option" type="radio" value="1"/><label >Option 1</label>
+      <div class="cut cut-short"></div>
+    </div>
+
+    <div class="input-container ic1">
+      <input id="op2" name="option" type="radio" value="2"/><label >Option 2</label>
+      <div class="cut cut-short"></div>
+    </div>
+
+    <div class="input-container ic1">
+      <input id="op3" name="option" type="radio" value="3"/><label >Option 3</label>
+      <div class="cut cut-short"></div>
+    </div>
+
+    <div class="input-container ic1">
+      <input id="op4" name="option" type="radio" value="4"/><label >Option 4</label>
+      <div class="cut cut-short"></div>
+    </div>
+     --}}
+    
+    <div class="submit">
+      <button type="submit" class="submit">
+        <span>Submit</span>
+        <div class="liquid"></div>
+      </button>
+    </div>
+
+  </form>
+
+</div>
+
