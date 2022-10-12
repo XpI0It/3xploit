@@ -14,15 +14,15 @@ body{
 }
 
 .banner{
-    position: absolute;
+  position: absolute;
   min-width: 90%;
-  height: 100vh;
+  min-height: 90%;
   background-size: cover;
   overflow: hidden;
 }
 .banner-text{
   position: absolute;
-  top: 15%;
+  top: 5%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #35FF9E;
