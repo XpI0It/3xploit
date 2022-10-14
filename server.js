@@ -27,6 +27,8 @@ database();
 app.use('/static', express.static(`${__dirname}/static`));
 // scripts (JS)
 app.use('/scripts', express.static(`${__dirname}/scripts`));
+// resource files (JSON)
+app.use('/res', express.static(`${__dirname}/res`));
 
 // data parsing middleware
 // Parse application/x-www-form-urlencoded

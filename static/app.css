@@ -1,4 +1,4 @@
-
+/*
 :root {
   background-color: #ecf5ff;
   font-size: 62.5%;
@@ -40,9 +40,9 @@ h3 {
   font-size: 2.8rem;
   font-weight: 500;
 }
-
+*/
 /* UTILITIES */
-
+/*
 .container {
   width: 100vw;
   height: 100vh;
@@ -79,8 +79,9 @@ h3 {
 .hidden {
   display: none;
 }
-
+*/
 /* BUTTONS */
+/*
 .btn {
   font-size: 1.8rem;
   padding: 1rem 0;
@@ -105,8 +106,9 @@ h3 {
   box-shadow: none;
   transform: none;
 }
-
+*/
 /* FORMS */
+/*
 form {
   width: 100%;
   display: flex;
@@ -126,3 +128,4 @@ input {
 input::placeholder {
   color: #aaa;
 }
+*/
