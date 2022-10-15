@@ -6,16 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Quick Quiz - Play</title>
-  {{!-- <link rel="stylesheet" href="app.css" />
-  <link rel="stylesheet" href="game.css" /> --}}
   <link rel="stylesheet" href="/static/{{style}}">
 </head>
 
 <body>
+  
   <div class="container">
     <div id="game" class="justify-center flex-column">
       <div id="hud">
         <div id="hud-item">
+          <div>
+            <h2 id="timer"></h2>
+          </div>
           <p id="progressText" class="hud-prefix">Question</p>
           <div id="progressBar">
             <div id="progressBarFull"></div>

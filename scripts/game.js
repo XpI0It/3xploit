@@ -11,6 +11,26 @@ let availableQuesions = [];
 
 let questions = [];
 
+
+var time = document.getElementById('timer');
+var startingTime = 20;  // time alloted for 1 question
+time.innerHTML = "Time Left: " + startingTime;
+
+setInterval(updateTimer, 1000); // sets interval of 1 sec
+
+// updates the timer
+function updateTimer()
+{
+    startingTime--;
+    if(startingTime == -1)
+    {
+        startingTime = 21;
+        getNewQuestion();
+    }
+    else timer.innerHTML = "Time Left: " + startingTime;
+}
+
+
 fetch('/res/questions.json',{
     //mode: 'no-cors',
     headers: {content_type: 'application/json'}
@@ -82,7 +102,9 @@ choices.forEach((choice) => {
 
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(classToApply);
+            startingTime = 21;
             getNewQuestion();
+            
         }, 1000);
     });
 });
