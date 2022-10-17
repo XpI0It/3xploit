@@ -1,0 +1,37 @@
+table .rank{
+    width: 100%,
+    
+}
+body {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+}
+thead {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    background: gray;
+
+}
+
+.heading tr{
+    color: white;
+    
+}
+
+tr .rank{
+    color: orange;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+tr .time {
+    color: white;
+}
+
+tr .level {
+    color: white;
+    font-weight: 1000;
+}

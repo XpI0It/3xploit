@@ -1,41 +1,43 @@
 <!--
 <div class="modules">
+  <img src="../../src/image/CleanShot 2022-06-20 at 00.04 1.png">
   <img
-    src="CleanShot 2022-06-20 at 00.04 1.png"
+    src="..\src\image\CleanShot 2022-06-20 at 00.04 1.png"
     alt="">
   <img
-    src="src\image\CleanShot 2022-06-20 at 00.07 1.png"
+    src="..\src\image\CleanShot 2022-06-20 at 00.07 1.png"
     alt="">
   <img
-    src="src\image\CleanShot 2022-06-20 at 00.13 1.png"
+    src="..\src\image\CleanShot 2022-06-20 at 00.13 1.png"
     alt="">
     <img
-        src="src\image\CleanShot 2022-06-20 at 00.14 1.png"
+        src="..\src\image\CleanShot 2022-06-20 at 00.14 1.png"
         alt="">
     <img
-        src="src\image\CleanShot 2022-06-20 at 00.16 1.png"
+        src="..\src\image\CleanShot 2022-06-20 at 00.16 1.png"
         alt="">
     <img
-        src="src\image\CleanShot 2022-06-20 at 00.17 1.png"
+        src="..\src\image\CleanShot 2022-06-20 at 00.17 1.png"
         alt="">
     <img
-        src="src\image\CleanShot 2022-06-20 at 00.19 1.png"
+        src="..\src\image\CleanShot 2022-06-20 at 00.19 1.png"
         alt="">
     <img
-        src="src\image\CleanShot 2022-06-20 at 00.04 2.png"
+        src="..\src\image\CleanShot 2022-06-20 at 00.04 2.png"
         alt="">
     <img
-        src="src\image\CleanShot 2022-06-20 at 00.14 2.png"
+        src="..\src\image\CleanShot 2022-06-20 at 00.14 2.png"
         alt="">
     <img
-        src="src\image\CleanShot 2022-06-20 at 00.17 2.png"
+        src="..\src\image\CleanShot 2022-06-20 at 00.17 2.png"
         alt="">
 
 </div>
 -->
+
 <div>
     <table class="rank">
-        <thead>
+        <thead class="heading">
           <tr>
             <th>Rank</th>
             <th>Time</th>
@@ -43,11 +45,11 @@
           </tr>
         </thead>
         <tbody>
-          {{#each users}}
+          {{#each boards}}
             <tr>
-                <td>{{rank}}</td>
-                <td>{{time}}</td>
-                <td>{{level}}</td>
+                <td class="rank">{{inc @index}}</td>
+                <td class="time">{{time}}</td>
+                <td class="level">{{level}}</td>
             </tr>
             {{else}}
                 <tr>
