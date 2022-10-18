@@ -1,62 +1,42 @@
-<!--
-<div class="modules">
-  <img src="../../src/image/CleanShot 2022-06-20 at 00.04 1.png">
-  <img
-    src="..\src\image\CleanShot 2022-06-20 at 00.04 1.png"
-    alt="">
-  <img
-    src="..\src\image\CleanShot 2022-06-20 at 00.07 1.png"
-    alt="">
-  <img
-    src="..\src\image\CleanShot 2022-06-20 at 00.13 1.png"
-    alt="">
-    <img
-        src="..\src\image\CleanShot 2022-06-20 at 00.14 1.png"
-        alt="">
-    <img
-        src="..\src\image\CleanShot 2022-06-20 at 00.16 1.png"
-        alt="">
-    <img
-        src="..\src\image\CleanShot 2022-06-20 at 00.17 1.png"
-        alt="">
-    <img
-        src="..\src\image\CleanShot 2022-06-20 at 00.19 1.png"
-        alt="">
-    <img
-        src="..\src\image\CleanShot 2022-06-20 at 00.04 2.png"
-        alt="">
-    <img
-        src="..\src\image\CleanShot 2022-06-20 at 00.14 2.png"
-        alt="">
-    <img
-        src="..\src\image\CleanShot 2022-06-20 at 00.17 2.png"
-        alt="">
+<body>
 
-</div>
--->
+  <section>
+    <!--for demo wrap-->
+    <h1 class="title">
+      3XPL<span id="highlight">></span>IT
+      Leaderboard
+    </h1>
 
-<div>
-    <table class="rank">
-        <thead class="heading">
+
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
           <tr>
-            <th>Rank</th>
-            <th>Time</th>
-            <th>Level</th>
+            <th>Rank <i class="fa-solid fa-ranking-star"></i></th>
+            <th>Time <i class="fa-light fa-timer"></i></th>
+            <th>Level <i class="fa-sharp fa-solid fa-code"></i></th>
           </tr>
         </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
         <tbody>
           {{#each boards}}
-            <tr>
-                <td class="rank">{{inc @index}}</td>
-                <td class="time">{{time}}</td>
-                <td class="level">{{level}}</td>
-            </tr>
-            {{else}}
-                <tr>
-                <td colspan="4">No Data Available</td>
-            </tr>
-        {{/each}}
+          <tr>
+            <td id="rank" class="rank ">{{inc @index}}</td>
+            <td id="time" class="time">{{time}}</td>
+            <td id="level" class="level">{{level}}</td>
+          </tr>
+
+          {{else}}
+          <tr>
+            <td colspan="4">No Data Available</td>
+          </tr>
+          {{/each}}
         </tbody>
       </table>
+    </div>
+  </section>
 
-</div>
+</body>
