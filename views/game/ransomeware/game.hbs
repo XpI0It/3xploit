@@ -10,15 +10,21 @@
 </head>
 
 <body>
-  
+
   <div class="container">
+
     <div id="game" class="justify-center flex-column">
+      {{!-- <p id="progressText" class="hud-prefix">Question</p> --}}
+      <h2 id="progressText" class=" heading">Question</h2>
+
       <div id="hud">
         <div id="hud-item">
-          <div>
-            <h2 id="timer"></h2>
+          <div class="timer">
+            <span>
+              <h2 id="timer"></h2>
+            </span>
           </div>
-          <p id="progressText" class="hud-prefix">Question</p>
+
           <div id="progressBar">
             <div id="progressBarFull"></div>
           </div>
