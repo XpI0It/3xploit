@@ -4,7 +4,7 @@
 
   
 
-   <a href="https://https://exploitt.herokuapp.com">Demo</a> . <a href="">Blog</a>
+   <a href="https://exploitt.herokuapp.com">Demo</a> . <a href="">Blog</a>
 </div>
 
 
