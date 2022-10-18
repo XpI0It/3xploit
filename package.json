@@ -13,7 +13,10 @@
     "express-handlebars": "^5.3.4",
     "express-session": "^1.17.2",
     "mongoose": "^6.6.5",
-    "nodemon": "^2.0.13"
+    "nodemon": "^2.0.13",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.24.0"
   },
   "main": "server.js",
   "repository": {

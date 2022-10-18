@@ -1,0 +1,42 @@
+<body>
+
+  <section>
+    <!--for demo wrap-->
+    <h1 class="title">
+      3XPL<span id="highlight">></span>IT
+      Leaderboard
+    </h1>
+
+
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+          <tr>
+            <th>Rank <i class="fa-solid fa-ranking-star"></i></th>
+            <th>Time <i class="fa-light fa-timer"></i></th>
+            <th>Level <i class="fa-sharp fa-solid fa-code"></i></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+          {{#each boards}}
+          <tr>
+            <td id="rank" class="rank ">{{inc @index}}</td>
+            <td id="time" class="time">{{time}}</td>
+            <td id="level" class="level">{{level}}</td>
+          </tr>
+
+          {{else}}
+          <tr>
+            <td colspan="4">No Data Available</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</body>

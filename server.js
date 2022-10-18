@@ -35,6 +35,12 @@ app.use('/res', express.static(`${__dirname}/res`));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+var Handlebars = require('handlebars');
+
+Handlebars.registerHelper("inc", function(value, options)
+{
+    return parseInt(value) + 1;
+});
 // Handlebars middleware
 app.set('view engine', '.hbs');
 app.engine(
@@ -50,6 +56,7 @@ app.use('/', require('./routes/main'));
 // Login/Register form routes
 app.use('/users', require('./routes/users'));
 app.use('/game', require('./routes/game'));
+app.use('/leaderboard', require('./routes/leaderboard'));
 
 //err handling
 app.use((req, res) => {
