@@ -19,7 +19,8 @@ game that allows people to have fun while they use their judgement to answer the
 
 The game describes a fictional city called Cursor City. Users are expected to complete each cybersecurity module to save the city from cyber criminals. 
 
-<img width="2149" alt="CleanShot 2022-10-18 at 02 52 17@2x" src="https://user-images.githubusercontent.com/71540402/196356878-6af954e1-8028-4663-afa0-0b6e416a460c.png">
+![Home  3XPLIT@2x](https://user-images.githubusercontent.com/71540402/196365404-1383cc2b-0914-42ce-a37c-8812828d1333.jpeg)
+
 
 
 ## Installation 
