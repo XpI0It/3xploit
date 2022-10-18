@@ -31,7 +31,7 @@ body {
   box-shadow: 0 0.4rem 1.4rem 0 rgba(24, 180, 86, 0.5);
   transform: translateY(-0.1rem);
   transition: transform 150ms;
-
+  
 }
 
 .choice-prefix {
@@ -76,12 +76,14 @@ body {
   height: 4rem;
   border: 0.3rem solid #6128dc;
   margin-top: 1.5rem;
+  border-radius: 3rem;
 }
 
 #progressBarFull {
   height: 3.4rem;
   background-color: #02a557;
   width: 0%;
+  border-radius: 2rem;
 }
 
 /* -------------------------------------------------- */
@@ -259,7 +261,6 @@ input::placeholder {
     0% {
         opacity: 0
     }
-
     100% {
         opacity: 1;
     }
