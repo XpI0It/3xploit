@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const user = require('../schemas/UserSchema');
+//const user = require('../schemas/UserSchema');
 
+const score = require('../schemas/test');
 router.get('/login', (req, res) => {
 	res.render('client/login', {
 		title: 'Login',
@@ -23,9 +24,9 @@ router.post('/login', async (req, res) => {
 	var password = req.body.password;
 
 	try {
-		user.findOne({ $and: [{ email: email }, { password: password }] }).then(
-			user => {
-				if (user != null) {
+		score.findOne({ $and: [{ email: email }, { password: password }] }).then(
+			score => {
+				if (score != null) {
 					res.redirect('/game/3xploit-modules');
 				} else {
 					res.render('client/login', {
@@ -77,7 +78,7 @@ router.post('/register', async (req, res) => {
 			style: 'auth.css'
 		});
 	} else {
-		var newUser = new user({
+		var newUser = new score({
 			email: email,
 			username: username,
 			password: password
@@ -107,16 +108,16 @@ function checkNullOrEmpty(mail, username, password) {
 
 // checks if email in database already exists or not
 async function isUserExisting(email) {
-	return user.findOne({ email: email }).then(user => {
-		if (user != null) return true;
+	return score.findOne({ email: email }).then(score => {
+		if (score != null) return true;
 		else return false;
 	});
 }
 
 // checks if username is already taken by someone or not
 async function isUserNameTaken(username) {
-	return user.findOne({ username: username }).then(user => {
-		if (user != null) return true;
+	return score.findOne({ username: username }).then(score => {
+		if (score != null) return true;
 		else return false;
 	});
 }

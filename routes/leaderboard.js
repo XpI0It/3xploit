@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const board = require("../schemas/BoardSchema.js");
+//const board = require("../schemas/BoardSchema.js");
+
+const score = require('../schemas/test');
 
 
 
@@ -18,10 +20,10 @@ router.get('/leaderboard', (req, res) => {
 
 
 
-    board.find().sort({time: 1}) 
+    score.find().sort({time: 1}) 
     .exec().then((data) => {
         data = data.map(value => value.toObject());
-        res.render("leaderboard/leaderboard", {boards: data, layout: 'main',
+        res.render("leaderboard/leaderboard", {scores: data, layout: 'main',
 		title: 'leaderboard',
 		style: 'leaderboard.css',});
     }).catch((err) => {

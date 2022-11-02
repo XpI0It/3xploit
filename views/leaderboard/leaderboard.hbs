@@ -15,6 +15,8 @@
             <th>Rank <i class="fa-solid fa-ranking-star"></i></th>
             <th>Time <i class="fa-light fa-timer"></i></th>
             <th>Level <i class="fa-sharp fa-solid fa-code"></i></th>
+            <th>Score <i class="fa-sharp fa-solid fa-code"></i></th>
+            <th>Username <i class="fa-sharp fa-solid fa-code"></i></th>
           </tr>
         </thead>
       </table>
@@ -22,11 +24,13 @@
     <div class="tbl-content">
       <table cellpadding="0" cellspacing="0" border="0">
         <tbody>
-          {{#each boards}}
+          {{#each scores}}
           <tr>
             <td id="rank" class="rank ">{{inc @index}}</td>
             <td id="time" class="time">{{time}}</td>
             <td id="level" class="level">{{level}}</td>
+            <td id="level" class="score">{{score}}</td>
+            <td id="level" class="username">{{username}}</td>
           </tr>
 
           {{else}}

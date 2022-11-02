@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
+const board = require("../schemas/BoardSchema.js");
+const score = require('../schemas/test');
+//
+
+
 // game modules
 
 router.get("/3xploit-modules", (req, res) => {
@@ -34,6 +39,23 @@ router.get("/ransomeware/end", (req, res) => {
   });
 });
 
+router.get('/ransomeware/highscore', (req, res) => {
+
+  score.find()
+ 
+  score.find().sort({time: 1}) 
+  .exec().then((data) => {
+      data = data.map(value => value.toObject());
+      res.render("leaderboard/leaderboard", {scores: data, layout: 'main',
+  title: 'leaderboard',
+  style: 'leaderboard.css',});
+  }).catch((err) => {
+      res.render("leaderboard/leaderboard", {message: "no results"});
+  });
+ 
+});
+
+/*
 router.get("/ransomeware/highscore", (req, res) => {
   res.render("game/ransomeware/highscores", {
     layout: "main",
@@ -42,5 +64,5 @@ router.get("/ransomeware/highscore", (req, res) => {
     script: "highscores.js",
   });
 });
-
+*/
 module.exports = router;
