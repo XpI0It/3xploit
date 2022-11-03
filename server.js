@@ -22,7 +22,13 @@ const database = (module.exports = () => {
 });
 
 database();
-
+/*
+var body = null;
+if (typeof document !== 'undefined') 
+{    // will run in client's browser only    
+  body = document.getElementsByTagName("body")[0];
+}
+*/
 //Static Files (CSS, Images)
 app.use("/static", express.static(`${__dirname}/static`));
 // scripts (JS)

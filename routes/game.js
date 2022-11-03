@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const board = require("../schemas/BoardSchema.js");
+//const time = require('../scripts/game');
+const userscore = require('../scripts/game');
+
+
+//const board = require("../schemas/BoardSchema.js");
 const score = require('../schemas/test');
 //
 
@@ -41,7 +45,11 @@ router.get("/ransomeware/end", (req, res) => {
 
 router.get('/ransomeware/highscore', (req, res) => {
 
-  score.find()
+  //var findname = score.find({email: ""}, {username: true});
+  score.updateOne(
+    { username: "test"},
+    { $set: { time:  2, score: 1}}
+  ).exec();
  
   score.find().sort({time: 1}) 
   .exec().then((data) => {

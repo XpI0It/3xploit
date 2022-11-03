@@ -5,7 +5,7 @@ const scoreText = document.getElementById("score");
 const progressBarFull = document.getElementById("progressBarFull");
 let currentQuestion = {};
 let acceptingAnswers = false;
-let score = 0;
+let userscore = 0;
 let questionCounter = 0;
 let availableQuesions = [];
 
@@ -48,15 +48,26 @@ const CORRECT_BONUS = 10;
 const MAX_QUESTIONS = 3;
 
 startGame = () => {
+  /*
+  if(typeof document === "undefined"){
+    console.log("document is undefined.");
+  }else{
+    questionCounter = 0;
+    userscore = 0;
+    availableQuesions = [...questions];
+    getNewQuestion();
+  }
+*/
   questionCounter = 0;
-  score = 0;
-  availableQuesions = [...questions];
-  getNewQuestion();
+    userscore = 0;
+    availableQuesions = [...questions];
+    getNewQuestion();
+  
 };
 
 getNewQuestion = () => {
   if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
-    localStorage.setItem("mostRecentScore", score);
+    localStorage.setItem("mostRecentScore", userscore);
     //go to the end page
     //return window.location.assign('/game/ransomeware/end');
     return (location.href = "/game/ransomeware/end");
@@ -105,6 +116,14 @@ choices.forEach((choice) => {
 });
 
 incrementScore = (num) => {
-  score += num;
-  scoreText.innerText = score;
+  var body = null;
+  if (typeof document !== 'undefined') {
+    // will run in client's browser only    
+    body = document.getElementsByTagName("body")[0];
+    userscore += num;
+    scoreText.innerText = userscore;
+    module.exports = userscore;
+  }
 };
+
+
