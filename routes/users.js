@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-//const user = require('../schemas/UserSchema');
+const user = require('../schemas/UserSchema');
 
-const score = require('../schemas/test');
+
+// GET: Login route
 router.get('/login', (req, res) => {
 	res.render('client/login', {
 		title: 'Login',
@@ -10,6 +11,8 @@ router.get('/login', (req, res) => {
 	});
 });
 
+
+// GET: Register route
 router.get('/register', (req, res) => {
 	res.render('client/register', {
 		title: 'Register',
@@ -23,11 +26,22 @@ router.post('/login', async (req, res) => {
 	var email = req.body.email;
 	var password = req.body.password;
 
+	// console.log(req.sessionID)
+
 	try {
-		score.findOne({ $and: [{ email: email }, { password: password }] }).then(
-			score => {
-				if (score != null) {
+		user.findOne({ $and: [{ email: email }, { password: password }] }).then(
+			user => {
+				if (user != null) {
+					var username = user.username;
+					
+					// create a session for user
+					req.session.authenticated = true;
+					req.session.user = {
+						email, password, username
+					}
+					req.session.cookie.expires = false;
 					res.redirect('/game/3xploit-modules');
+
 				} else {
 					res.render('client/login', {
 						error: 'Invalid username or password',
@@ -78,7 +92,7 @@ router.post('/register', async (req, res) => {
 			style: 'auth.css'
 		});
 	} else {
-		var newUser = new score({
+		var newUser = new user({
 			email: email,
 			username: username,
 			password: password
@@ -87,6 +101,14 @@ router.post('/register', async (req, res) => {
 		try {
 			await newUser.save().then(mssg => {
 				console.log('User registered successfully');
+
+				// creates a session for the new user
+				req.session.authenticated = true;
+					req.session.user = {
+						email, password, username
+					}
+					req.session.cookie.expires = false;
+
 				res.redirect('/game/3xploit-modules');
 			});
 		} catch (e) {
@@ -108,7 +130,7 @@ function checkNullOrEmpty(mail, username, password) {
 
 // checks if email in database already exists or not
 async function isUserExisting(email) {
-	return score.findOne({ email: email }).then(score => {
+	return user.findOne({ email: email }).then(score => {
 		if (score != null) return true;
 		else return false;
 	});
@@ -116,8 +138,8 @@ async function isUserExisting(email) {
 
 // checks if username is already taken by someone or not
 async function isUserNameTaken(username) {
-	return score.findOne({ username: username }).then(score => {
-		if (score != null) return true;
+	return user.findOne({ username: username }).then(data => {
+		if (data != null) return true;
 		else return false;
 	});
 }

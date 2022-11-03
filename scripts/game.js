@@ -9,6 +9,14 @@ let score = 0;
 let questionCounter = 0;
 let availableQuesions = [];
 
+let totalTime = 0;
+
+setInterval(updateTotalTime, 1000);
+
+function updateTotalTime() {
+  totalTime += 1;
+}
+
 let questions = [];
 
 var time = document.getElementById("timer");
@@ -56,10 +64,14 @@ startGame = () => {
 
 getNewQuestion = () => {
   if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+    //module.exports = score;
+    
     localStorage.setItem("mostRecentScore", score);
     //go to the end page
-    //return window.location.assign('/game/ransomeware/end');
-    return (location.href = "/game/ransomeware/end");
+    
+    return window.location.href = '/game/ransomeware/end?score=' + score + "&time=" + totalTime;
+    // this
+    // return (location.href = "/game/ransomeware/end");
   }
   questionCounter++;
   progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;

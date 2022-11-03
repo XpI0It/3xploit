@@ -2,6 +2,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const app = express();
 const mongoose = require("mongoose");
+const session = require("express-session");
 
 // database
 const database = (module.exports = () => {
@@ -30,6 +31,16 @@ app.use("/scripts", express.static(`${__dirname}/scripts`));
 // resource files (JSON)
 app.use("/res", express.static(`${__dirname}/res`));
 
+
+// register sessions
+app.use(session({
+  secret: "prj2022exploit",
+  cookie: {maxAge: 30000000},
+  saveUninitialized: true
+}))
+
+
+
 // data parsing middleware
 // Parse application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }));
@@ -50,12 +61,10 @@ app.engine(
   })
 );
 
-// main routes
+//  routes
 app.use("/", require("./routes/main"));
-// Login/Register form routes
 app.use("/users", require("./routes/users"));
 app.use("/game", require("./routes/game"));
-app.use("/scores", require("./routes/leaderboard"));
 
 //err handling
 app.use((req, res) => {
@@ -68,3 +77,5 @@ app.listen(HTTP_PORT, (err) => {
   if (err) console.log(err);
   else console.log(`=> Started at http://localhost:${HTTP_PORT}`);
 });
+
+module.exports = session;

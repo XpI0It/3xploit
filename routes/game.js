@@ -1,25 +1,30 @@
 const express = require("express");
 const router = express.Router();
+const score = require('../schemas/ScoreSchema');
 
-const board = require("../schemas/BoardSchema.js");
-const score = require('../schemas/test');
-//
-
+// middleware function to check if user logged in or not
+function isAuthenticated(req, res, next) {
+  if(!req.session.user){
+    res.redirect('/users/register')
+  }
+  else{
+    next();
+  }
+}
 
 // game modules
-
-router.get("/3xploit-modules", (req, res) => {
+router.get("/3xploit-modules",isAuthenticated, (req, res) => {
   res.render("game/modules", {
     layout: "main",
     title: "3xploit Modules",
     style: "module.css",
+    session: req.session
   });
 });
 
+
 // GET: starts ransomeware module
-router.get("/ransomeware", (req, res) => {
-  // buildGame();	// builds game
-  // questionIndex++;
+router.get("/ransomeware", isAuthenticated, (req, res) => {
 
   // renders appropriate question
   res.render("game/ransomeware/game", {
@@ -27,23 +32,49 @@ router.get("/ransomeware", (req, res) => {
     title: "ransomeware",
     style: "game.css",
     script: "game.js",
+    session: req.session
   });
 });
 
-router.get("/ransomeware/end", (req, res) => {
-  res.render("game/ransomeware/end", {
-    layout: "main",
-    title: "end",
-    style: "game.css",
-    script: "end.js",
-  });
+
+// GET: Final Score Page
+router.get("/ransomeware/end", isAuthenticated,  async (req, res) => {
+  
+  var receivedScore = req.query.score;
+  var receivedTime = req.query.time;
+
+  // console.log(req.session.user.username);
+  var username = req.session.user.username;
+
+  var newScoreData = new score({
+    username: username,
+    score: receivedScore,
+    time: receivedTime
+  })
+
+  try {
+    await newScoreData.save().then(mssg => {
+      console.log("Score Saved Successfully");
+      res.render("game/ransomeware/end", {
+        layout: "main",
+        title: "end",
+        style: "game.css",
+        script: "end.js",
+        session: req.session
+      });
+    })
+  }
+  catch (err) {console.log(err)}
+
 });
 
-router.get('/ransomeware/highscore', (req, res) => {
 
-  score.find()
+// GET: leaderboard
+router.get('/ransomeware/highscore', isAuthenticated, (req, res) => {
  
-  score.find().sort({time: 1}) 
+  // sorts the scores first, if tie, then sorts by time taken by user
+
+  score.find().sort({score: -1, time: 1}) 
   .exec().then((data) => {
       data = data.map(value => value.toObject());
       res.render("leaderboard/leaderboard", {scores: data, layout: 'main',
@@ -55,14 +86,4 @@ router.get('/ransomeware/highscore', (req, res) => {
  
 });
 
-/*
-router.get("/ransomeware/highscore", (req, res) => {
-  res.render("game/ransomeware/highscores", {
-    layout: "main",
-    title: "end",
-    style: "game.css",
-    script: "highscores.js",
-  });
-});
-*/
 module.exports = router;
