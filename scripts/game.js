@@ -3,6 +3,7 @@ const choices = Array.from(document.getElementsByClassName("choice-text"));
 const progressText = document.getElementById("progressText");
 const scoreText = document.getElementById("score");
 const progressBarFull = document.getElementById("progressBarFull");
+const answerText = document.getElementById("answer");
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
@@ -82,6 +83,8 @@ getNewQuestion = () => {
   currentQuestion = availableQuesions[questionIndex];
   question.innerText = currentQuestion.question;
 
+  answerText.innerText = " ";
+
   choices.forEach((choice) => {
     const number = choice.dataset["number"];
     choice.innerText = currentQuestion["choice" + number];
@@ -104,9 +107,16 @@ choices.forEach((choice) => {
 
     if (classToApply === "correct") {
       incrementScore(CORRECT_BONUS);
+      selectedChoice.parentElement.classList.add(classToApply);
+    }
+    else {
+      selectedChoice.parentElement.classList.add(classToApply);
+      console.log(currentQuestion.answerText);
+      answerText.innerText = "Correct Answer: " + currentQuestion.answerText;
+      
     }
 
-    selectedChoice.parentElement.classList.add(classToApply);
+    // selectedChoice.parentElement.classList.add(classToApply);
 
     setTimeout(() => {
       selectedChoice.parentElement.classList.remove(classToApply);

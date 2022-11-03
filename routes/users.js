@@ -2,9 +2,19 @@ const express = require('express');
 const router = express.Router();
 const user = require('../schemas/UserSchema');
 
+// middleware function to check if user logged in or not
+function isAuthenticated(req, res, next) {
+	if(req.session.user){
+	  res.redirect('/game/3xploit-modules')
+	}
+	else{
+	  next();
+	}
+  }
+
 
 // GET: Login route
-router.get('/login', (req, res) => {
+router.get('/login', isAuthenticated, (req, res) => {
 	res.render('client/login', {
 		title: 'Login',
 		style: 'auth.css'
@@ -13,7 +23,7 @@ router.get('/login', (req, res) => {
 
 
 // GET: Register route
-router.get('/register', (req, res) => {
+router.get('/register', isAuthenticated, (req, res) => {
 	res.render('client/register', {
 		title: 'Register',
 		style: 'auth.css'
