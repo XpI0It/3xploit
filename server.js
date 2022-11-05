@@ -1,8 +1,10 @@
-const express = require("express");
-const exphbs = require("express-handlebars");
+const express = require('express');
+const exphbs = require('express-handlebars');
+
 const app = express();
-const mongoose = require("mongoose");
-const session = require("express-session");
+const mongoose = require('mongoose');
+
+const session = require('express-session');
 
 // database
 const database = (module.exports = () => {
@@ -13,10 +15,10 @@ const database = (module.exports = () => {
 
   try {
     mongoose.connect(
-      "mongodb+srv://PRJ:PRJ666@cluster0.gqgjk6y.mongodb.net/?retryWrites=true&w=majority"
+      'mongodb+srv://PRJ:PRJ666@cluster0.gqgjk6y.mongodb.net/?retryWrites=true&w=majority'
     ),
       connectionParameters;
-    console.log("Database connection successful");
+    console.log('Database connection successful');
   } catch (error) {
     console.log(error);
   }
@@ -25,50 +27,50 @@ const database = (module.exports = () => {
 database();
 
 //Static Files (CSS, Images)
-app.use("/static", express.static(`${__dirname}/static`));
+app.use('/static', express.static(`${__dirname}/static`));
 // scripts (JS)
-app.use("/scripts", express.static(`${__dirname}/scripts`));
+app.use('/scripts', express.static(`${__dirname}/scripts`));
 // resource files (JSON)
-app.use("/res", express.static(`${__dirname}/res`));
-
+app.use('/res', express.static(`${__dirname}/res`));
 
 // register sessions
-app.use(session({
-  secret: "prj2022exploit",
-  cookie: {maxAge: 30000000},
-  saveUninitialized: true
-}))
-
-
+app.use(
+  session({
+    secret: 'prj2022exploit',
+    resave: true,
+    saveUninitialized: true,
+    cookie: { maxAge: 30000000 },
+  })
+);
 
 // data parsing middleware
 // Parse application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-var Handlebars = require("handlebars");
+var Handlebars = require('handlebars');
 
-Handlebars.registerHelper("inc", function (value, options) {
+Handlebars.registerHelper('inc', function (value) {
   return parseInt(value) + 1;
 });
 // Handlebars middleware
-app.set("view engine", ".hbs");
+app.set('view engine', '.hbs');
 app.engine(
-  ".hbs",
+  '.hbs',
   exphbs({
-    extname: ".hbs",
-    defaultLayout: "main",
+    extname: '.hbs',
+    defaultLayout: 'main',
   })
 );
 
 //  routes
-app.use("/", require("./routes/main"));
-app.use("/users", require("./routes/users"));
-app.use("/game", require("./routes/game"));
+app.use('/', require('./routes/main'));
+app.use('/users', require('./routes/users'));
+app.use('/game', require('./routes/game'));
 
 //err handling
 app.use((req, res) => {
-  res.status(404).send("<i>something broke :/</i>");
+  res.status(404).send('<i>something broke :/</i>');
 });
 
 //port

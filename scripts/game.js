@@ -1,9 +1,9 @@
-const question = document.getElementById("question");
-const choices = Array.from(document.getElementsByClassName("choice-text"));
-const progressText = document.getElementById("progressText");
-const scoreText = document.getElementById("score");
-const progressBarFull = document.getElementById("progressBarFull");
-const answerText = document.getElementById("answer");
+const question = document.getElementById('question');
+const choices = Array.from(document.getElementsByClassName('choice-text'));
+const progressText = document.getElementById('progressText');
+const scoreText = document.getElementById('score');
+const progressBarFull = document.getElementById('progressBarFull');
+const answerText = document.getElementById('answer');
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
@@ -20,9 +20,9 @@ function updateTotalTime() {
 
 let questions = [];
 
-var time = document.getElementById("timer");
+var time = document.getElementById('timer');
 var startingTime = 20; // time alloted for 1 question
-time.innerHTML = "Time Left: " + startingTime;
+time.innerHTML = 'Time Left: ' + startingTime;
 
 setInterval(updateTimer, 1000); // sets interval of 1 sec
 
@@ -32,12 +32,12 @@ function updateTimer() {
   if (startingTime == -1) {
     startingTime = 21;
     getNewQuestion();
-  } else timer.innerHTML = "Time Left: " + startingTime;
+  } else timer.innerHTML = 'Time Left: ' + startingTime;
 }
 
-fetch("/res/questions.json", {
+fetch('/res/questions.json', {
   //mode: 'no-cors',
-  headers: { content_type: "application/json" },
+  headers: { content_type: 'application/json' },
 })
   .then((res) => {
     console.log(res.status);
@@ -66,11 +66,11 @@ startGame = () => {
 getNewQuestion = () => {
   if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
     //module.exports = score;
-    
-    localStorage.setItem("mostRecentScore", score);
+
+    localStorage.setItem('mostRecentScore', score);
     //go to the end page
-    
-    return window.location.href = '/game/ransomeware/end?score=' + score + "&time=" + totalTime;
+
+    return (window.location.href = '/game/ransomeware/end?score=' + score + '&time=' + totalTime);
     // this
     // return (location.href = "/game/ransomeware/end");
   }
@@ -83,11 +83,11 @@ getNewQuestion = () => {
   currentQuestion = availableQuesions[questionIndex];
   question.innerText = currentQuestion.question;
 
-  answerText.innerText = " ";
+  answerText.innerText = ' ';
 
   choices.forEach((choice) => {
-    const number = choice.dataset["number"];
-    choice.innerText = currentQuestion["choice" + number];
+    const number = choice.dataset['number'];
+    choice.innerText = currentQuestion['choice' + number];
   });
 
   availableQuesions.splice(questionIndex, 1);
@@ -95,28 +95,23 @@ getNewQuestion = () => {
 };
 
 choices.forEach((choice) => {
-  choice.addEventListener("click", (e) => {
+  choice.addEventListener('click', (e) => {
     if (!acceptingAnswers) return;
 
     acceptingAnswers = false;
     const selectedChoice = e.target;
-    const selectedAnswer = selectedChoice.dataset["number"];
+    const selectedAnswer = selectedChoice.dataset['number'];
 
-    const classToApply =
-      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+    const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
 
-    if (classToApply === "correct") {
+    if (classToApply === 'correct') {
       incrementScore(CORRECT_BONUS);
       selectedChoice.parentElement.classList.add(classToApply);
-    }
-    else {
+    } else {
       selectedChoice.parentElement.classList.add(classToApply);
       console.log(currentQuestion.answerText);
-      answerText.innerText = "Correct Answer: " + currentQuestion.answerText;
-      
+      answerText.innerText = 'Correct Answer: ' + currentQuestion.answerText;
     }
-
-    // selectedChoice.parentElement.classList.add(classToApply);
 
     setTimeout(() => {
       selectedChoice.parentElement.classList.remove(classToApply);

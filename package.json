@@ -28,5 +28,9 @@
     "url": "https://github.com/batunpc/steakhouse-website/issues"
   },
   "homepage": "https://github.com/batunpc/steakhouse-website#readme",
-  "description": "website created by Batuhan Ipci"
+  "description": "website created by Batuhan Ipci",
+  "devDependencies": {
+    "eslint": "^8.26.0",
+    "prettier": "2.7.1"
+  }
 }
