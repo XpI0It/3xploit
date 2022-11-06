@@ -1,8 +1,13 @@
 <div class="home">
   <div class="register">
-    <a href="users/register">
-      <i class="fa fa-user-circle"></i>
-    </a>
+    <h1 class="subtitle">{{username}}</h1>
+    {{#if username}}
+        <a href="users/logout">Log Out</a>
+    {{else}}
+        <a href="users/register">
+          <i class="fa fa-user-circle"></i>
+        </a>
+    {{/if}}
   </div>
 
   <h1 class="title">
