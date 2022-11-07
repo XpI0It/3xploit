@@ -11,19 +11,67 @@ function isAuthenticated(req, res, next) {
   }
 }
 
+// get last score of user
+async function getLastScore(username) 
+{
+  return score.findOne({username: username}).then((user) => {
+    if(user != null)
+    {
+      return user.score;
+    }
+  });
+}
+
+// get last time taken by user
+async function getLastTimeTaken(username)
+{
+  return score.findOne({username: username}).then((user) => {
+    if(user != null)
+    {
+      return user.time;
+    }
+  });
+}
+
+// get last module played by user
+async function getLastModulePlayed(username)
+{
+  return score.findOne({username: username}).then((user) => {
+    if(user != null)
+    {
+      return user.module;
+    }
+  });
+}
+
 // game modules
-router.get('/3xploit-modules', isAuthenticated, (req, res) => {
+router.get('/3xploit-modules', isAuthenticated, async (req, res) => {
+  
+  var userPreviousData = {
+    lastScore: await getLastScore(req.session.user.username),
+    lastTime: await getLastTimeTaken(req.session.user.username),
+    lastModule: await getLastModulePlayed(req.session.user.username)
+  };
+
   res.render('game/modules', {
     layout: 'main',
     title: '3xploit Modules',
     style: 'module.css',
     session: req.session,
     username: req.session.user.username,
+    userPrevData: userPreviousData
   });
 });
 
 // GET: starts ransomeware module
-router.get('/ransomeware', isAuthenticated, (req, res) => {
+router.get('/ransomeware', isAuthenticated, async (req, res) => {
+  
+  var userPreviousData = {
+    lastScore: await getLastScore(req.session.user.username),
+    lastTime: await getLastTimeTaken(req.session.user.username),
+    lastModule: await getLastModulePlayed(req.session.user.username)
+  };
+  
   // renders appropriate question
   res.render('game/ransomeware/game', {
     layout: 'main',
@@ -32,6 +80,7 @@ router.get('/ransomeware', isAuthenticated, (req, res) => {
     script: 'game.js',
     session: req.session,
     username: req.session.user.username,
+    userPrevData: userPreviousData
   });
 });
 
@@ -39,8 +88,13 @@ router.get('/ransomeware', isAuthenticated, (req, res) => {
 router.get('/ransomeware/end', isAuthenticated, async (req, res) => {
   var receivedScore = req.query.score;
   var receivedTime = req.query.time;
-
   var username = req.session.user.username;
+
+  var userPreviousData = {
+    lastScore: await getLastScore(req.session.user.username),
+    lastTime: await getLastTimeTaken(req.session.user.username),
+    lastModule: await getLastModulePlayed(req.session.user.username)
+  };
 
   score.findOne({ username: username }).then(async (data) => {
     if (data == null) {
@@ -48,6 +102,7 @@ router.get('/ransomeware/end', isAuthenticated, async (req, res) => {
         username: username,
         score: receivedScore,
         time: receivedTime,
+        module: "Ransomeware"
       });
 
       // creates new score for the user
@@ -61,6 +116,7 @@ router.get('/ransomeware/end', isAuthenticated, async (req, res) => {
             script: 'end.js',
             session: req.session,
             username: req.session.user.username,
+            userPrevData: userPreviousData
           });
         });
       } catch (err) {
@@ -78,6 +134,7 @@ router.get('/ransomeware/end', isAuthenticated, async (req, res) => {
             script: 'end.js',
             session: req.session,
             username: req.session.user.username,
+            userPrevData: userPreviousData
           });
         }
       });
@@ -86,9 +143,15 @@ router.get('/ransomeware/end', isAuthenticated, async (req, res) => {
 });
 
 // GET: leaderboard
-router.get('/ransomeware/highscore', isAuthenticated, (req, res) => {
-  // sorts the scores first, if tie, then sorts by time taken by user
+router.get('/ransomeware/highscore', isAuthenticated, async (req, res) => {
+  
+  var userPreviousData = {
+    lastScore: await getLastScore(req.session.user.username),
+    lastTime: await getLastTimeTaken(req.session.user.username),
+    lastModule: await getLastModulePlayed(req.session.user.username)
+  };
 
+  // sorts the scores first, if tie, then sorts by time taken by user
   score
     .find()
     .sort({ score: -1, time: 1 })
@@ -100,6 +163,7 @@ router.get('/ransomeware/highscore', isAuthenticated, (req, res) => {
         layout: 'main',
         title: 'leaderboard',
         style: 'leaderboard.css',
+        userPrevData: userPreviousData
       });
     })
     .catch((err) => {

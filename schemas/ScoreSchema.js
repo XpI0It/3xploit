@@ -20,6 +20,10 @@ const ScoreSchema = new Schema({
     required: true,
     default: 0,
   },
+  module: {
+    type: 'string',
+    required: true
+  }
 });
 var Score = mongoose.model('Score', ScoreSchema);
 module.exports = Score;
