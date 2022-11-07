@@ -96,7 +96,7 @@ router.get('/ransomeware/end', isAuthenticated, async (req, res) => {
     lastModule: await getLastModulePlayed(req.session.user.username)
   };
 
-  score.findOne({ username: username }).then(async (data) => {
+  score.findOne({$and: [{ username: username }, {module: "Ransomeware"}]}).then(async (data) => {
     if (data == null) {
       var newScoreData = new score({
         username: username,
