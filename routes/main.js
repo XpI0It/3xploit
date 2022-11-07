@@ -3,33 +3,27 @@ const router = express.Router();
 const score = require('../schemas/ScoreSchema');
 
 // get last score of user
-async function getLastScore(username) 
-{
-  return score.findOne({username: username}).then((user) => {
-    if(user != null)
-    {
+async function getLastScore(username) {
+  return score.findOne({ username: username }).then((user) => {
+    if (user != null) {
       return user.score;
     }
   });
 }
 
 // get last time taken by user
-async function getLastTimeTaken(username)
-{
-  return score.findOne({username: username}).then((user) => {
-    if(user != null)
-    {
+async function getLastTimeTaken(username) {
+  return score.findOne({ username: username }).then((user) => {
+    if (user != null) {
       return user.time;
     }
   });
 }
 
 // get last module played by user
-async function getLastModulePlayed(username)
-{
-  return score.findOne({username: username}).then((user) => {
-    if(user != null)
-    {
+async function getLastModulePlayed(username) {
+  return score.findOne({ username: username }).then((user) => {
+    if (user != null) {
       return user.module;
     }
   });
@@ -37,14 +31,11 @@ async function getLastModulePlayed(username)
 
 //home
 router.get('/', async (req, res) => {
-  
-  
   if (req.session.user) {
-
     var userPreviousData = {
       lastScore: await getLastScore(req.session.user.username),
       lastTime: await getLastTimeTaken(req.session.user.username),
-      lastModule: await getLastModulePlayed(req.session.user.username)
+      lastModule: await getLastModulePlayed(req.session.user.username),
     };
 
     res.render('home/home', {
