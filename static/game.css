@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap');
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   font-family: sans-serif;
   margin: 0;
   background-color: rgb(16, 16, 16);
@@ -11,7 +15,6 @@ body {
   font-family: 'Fredoka', sans-serif;
   margin: 0;
   padding: 0;
-
 }
 
 /* username */
@@ -35,7 +38,6 @@ body {
   box-shadow: 0 0.4rem 1.4rem 0 rgba(24, 180, 86, 0.5);
   transform: translateY(-0.1rem);
   transition: transform 150ms;
-  
 }
 
 .choice-prefix {
@@ -93,15 +95,13 @@ body {
 /* -------------------------------------------------- */
 
 #hud-item #timer {
-  font-size: 3rem;  
-  color:  wheat;  
-
+  font-size: 3rem;
+  color: wheat;
 }
 
-
-.timer span{
+.timer span {
   font-size: 2.5rem;
-  color:  wheat;
+  color: wheat;
 }
 
 /* display timer side by side */
@@ -109,13 +109,6 @@ body {
   display: flex;
   justify-content: space-between;
 }
-
-
-:root {
-  background-color: #ecf5ff;
-  font-size: 62.5%;
-}
-
 
 h1,
 h2,
@@ -200,7 +193,7 @@ h3 {
 
 .btn:hover {
   cursor: pointer;
-  box-shadow: 0 0.4rem 1.4rem 0  rgba(24, 180, 86, 0.5);
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(24, 180, 86, 0.5);
   transform: translateY(-0.1rem);
   transition: transform 150ms;
 }
@@ -233,7 +226,7 @@ input::placeholder {
 }
 
 #question {
-  color:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 /* ------------------ Highscore ----------------------------------------------------------------*/
 
@@ -252,20 +245,19 @@ input::placeholder {
   transform: scale(1.025);
 }
 
-
 .heading {
   font-size: 5vw;
-  text-shadow: 4px 4px 0px #35FF9E;
+  text-shadow: 4px 4px 0px #35ff9e;
   mix-blend-mode: screen;
   animation: fadeIn 2.5s linear forwards;
   text-align: center;
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

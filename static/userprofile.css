@@ -1,0 +1,132 @@
+.registerBtn a {
+  /*placement for code pen*/
+
+  /*Button Text Style*/
+  font-family: 'Inconsolata', 'Helvetica', 'Arial', sans-serif;
+  font-size: inherit;
+
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  /*Button Color & Border*/
+  border: 4px solid #3c14d0;
+  color: #3c14d0;
+  background: #fff;
+  outline: none;
+  /*Position, Display, Size*/
+  position: absolute;
+  top: 3rem;
+  right: 4rem;
+  /* put it to the corner */
+
+  padding: 15px 10px 14px;
+  cursor: pointer;
+}
+
+.registerBtn a:after {
+  /*Make a:after be as big as button*/
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /*Give a:after Border & Background color*/
+  border: 2px solid #35ff9e;
+  background-color: #3c14d0;
+  /* hue 259 in hexa */
+
+  /*Decide Location of a:after..this gives a           bottom right shadow*/
+  right: 4px;
+  top: 4px;
+  /*Place a:after behind button*/
+  z-index: -1;
+  content: '';
+  /*Animation/Transition Speed*/
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
+
+.registerBtn a:hover {
+  top: 3rem;
+  right: 4rem;
+}
+
+.registerBtn a:hover:after {
+  top: -3px;
+  right: -4px;
+}
+
+:root {
+  --fir-font-article: 'adobe-garamond-pro', 'Times New Roman', Times;
+  --fir-font-header: 'foco', Helvetica;
+  --fir-blue-twitter-alpha: rgba(85, 172, 238, 0.6);
+  --fir-color-grey: rgba(0, 0, 0, 0.4);
+}
+
+.fir-clickcircle {
+  height: 90px;
+  width: 90px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.fir-image-figure {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  position: relative;
+  text-decoration: none;
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  text-align: start;
+  background-color: #3f1db9;
+  border: #3a3c41 4px solid;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.fir-image-figure .caption,
+.fir-image-figure figcaption {
+  padding-left: 15px;
+}
+
+html.wf-active .fir-image-figure .fig-author-figure-title {
+  font-family: var(--fir-font-header);
+  font-size: 16px;
+}
+
+.fir-image-figure .fig-author-figure-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.835);
+  margin-top: 2px;
+}
+
+.fir-imageover {
+  position: relative;
+  display: flex;
+}
+
+.fir-imageover-color {
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  background: var(--fir-blue-twitter-alpha);
+  background-image: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  animation: fadeInFadeOut 2s infinite;
+  top: 0;
+  left: 0;
+}
+
+.fir-imageover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: fadeInFadeOut 2s infinite;
+}

@@ -1,113 +1,110 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 const score = require('../schemas/ScoreSchema');
 
 // middleware function to check if user logged in or not
 function isAuthenticated(req, res, next) {
-  if(!req.session.user){
-    res.redirect('/users/register')
-  }
-  else{
+  if (!req.session.user) {
+    res.redirect('/users/register');
+  } else {
     next();
   }
 }
 
 // game modules
-router.get("/3xploit-modules",isAuthenticated, (req, res) => {
-  res.render("game/modules", {
-    layout: "main",
-    title: "3xploit Modules",
-    style: "module.css",
+router.get('/3xploit-modules', isAuthenticated, (req, res) => {
+  res.render('game/modules', {
+    layout: 'main',
+    title: '3xploit Modules',
+    style: 'module.css',
     session: req.session,
-    username: req.session.user.username
+    username: req.session.user.username,
   });
 });
-
 
 // GET: starts ransomeware module
-router.get("/ransomeware", isAuthenticated, (req, res) => {
-
+router.get('/ransomeware', isAuthenticated, (req, res) => {
   // renders appropriate question
-  res.render("game/ransomeware/game", {
-    layout: "main",
-    title: "ransomeware",
-    style: "game.css",
-    script: "game.js",
+  res.render('game/ransomeware/game', {
+    layout: 'main',
+    title: 'ransomeware',
+    style: 'game.css',
+    script: 'game.js',
     session: req.session,
-    username: req.session.user.username
+    username: req.session.user.username,
   });
 });
 
-
 // GET: Final Score Page
-router.get("/ransomeware/end", isAuthenticated,  async (req, res) => {
-  
+router.get('/ransomeware/end', isAuthenticated, async (req, res) => {
   var receivedScore = req.query.score;
   var receivedTime = req.query.time;
 
   var username = req.session.user.username;
 
-  score.findOne({username: username}).then(async (data) => {
-    if(data == null)
-    {
+  score.findOne({ username: username }).then(async (data) => {
+    if (data == null) {
       var newScoreData = new score({
         username: username,
         score: receivedScore,
-        time: receivedTime
+        time: receivedTime,
       });
 
       // creates new score for the user
       try {
-        await newScoreData.save().then(mssg => {
-          console.log("Score Saved Successfully");
-          res.render("game/ransomeware/end", {
-            layout: "main",
-            title: "end",
-            style: "game.css",
-            script: "end.js",
+        await newScoreData.save().then((mssg) => {
+          console.log('Score Saved Successfully');
+          res.render('game/ransomeware/end', {
+            layout: 'main',
+            title: 'end',
+            style: 'game.css',
+            script: 'end.js',
             session: req.session,
-            username: req.session.user.username
+            username: req.session.user.username,
           });
-        })
+        });
+      } catch (err) {
+        console.log(err);
       }
-      catch (err) {console.log(err)}
-    }
-    else
-    {
+    } else {
       // updates existing score for the user
-      score.updateOne({username: username}, {score: receivedScore}).then(async (data) => {
-        if(data != null){
-          console.log("Score Updated Successfully");
-          res.render("game/ransomeware/end", {
-            layout: "main",
-            title: "end",
-            style: "game.css",
-            script: "end.js",
+      score.updateOne({ username: username }, { score: receivedScore }).then(async (data) => {
+        if (data != null) {
+          console.log('Score Updated Successfully');
+          res.render('game/ransomeware/end', {
+            layout: 'main',
+            title: 'end',
+            style: 'game.css',
+            script: 'end.js',
             session: req.session,
-            username: req.session.user.username
+            username: req.session.user.username,
           });
         }
       });
     }
-  })
+  });
 });
-
 
 // GET: leaderboard
 router.get('/ransomeware/highscore', isAuthenticated, (req, res) => {
- 
   // sorts the scores first, if tie, then sorts by time taken by user
 
-  score.find().sort({score: -1, time: 1}) 
-  .exec().then((data) => {
-      data = data.map(value => value.toObject());
-      res.render("leaderboard/leaderboard", {scores: data, layout: 'main',
-  title: 'leaderboard',
-  style: 'leaderboard.css',});
-  }).catch((err) => {
-      res.render("leaderboard/leaderboard", {message: "no results"});
-  });
- 
+  score
+    .find()
+    .sort({ score: -1, time: 1 })
+    .exec()
+    .then((data) => {
+      data = data.map((value) => value.toObject());
+      res.render('leaderboard/leaderboard', {
+        scores: data,
+        layout: 'main',
+        title: 'leaderboard',
+        style: 'leaderboard.css',
+      });
+    })
+    .catch((err) => {
+      res.render('leaderboard/leaderboard', { message: 'no results' });
+    });
 });
 
 module.exports = router;

@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/static/userprofile.css">
+{{#if username}}
+{{!-- USER PROFILE --}}
+<figure class="fir-image-figure">
+  <a class="fir-imageover" rel="noopener" href="#">
+    <img class="fir-author-image fir-clickcircle"
+      src="https://icons.veryicon.com/png/256/business/bitcoin-icon/anonymous-4.png" alt="userprofile">
+  </a>
+
+  <figcaption>
+    <div class="fig-author-figure-title">{{username}}</div>
+    <div class="fig-author-figure-title">Last score: "TODO"</div>
+    <div class="fig-author-figure-title">Time taken: "TODO"</div>
+  </figcaption>
+</figure>
+{{!-- USER PROFILE --}}
+<div class="registerBtn">
+  <a href="/users/logout">Log Out</a>
+</div>
+
+{{else}}
+<div class="registerBtn">
+  <a href="/users/register">Register </a>
+
+</div>
+{{/if}}
