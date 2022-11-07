@@ -14,7 +14,7 @@ function isAuthenticated(req, res, next) {
 // get last score of user
 async function getLastScore(username) 
 {
-  return score.findOne({username: username}).then((user) => {
+  return score.findOne({$and: [{username: username}, {lastPlayed: true}]}).then((user) => {
     if(user != null)
     {
       return user.score;
@@ -25,7 +25,7 @@ async function getLastScore(username)
 // get last time taken by user
 async function getLastTimeTaken(username)
 {
-  return score.findOne({username: username}).then((user) => {
+  return score.findOne({$and: [{username: username}, {lastPlayed: true}]}).then((user) => {
     if(user != null)
     {
       return user.time;
@@ -36,12 +36,24 @@ async function getLastTimeTaken(username)
 // get last module played by user
 async function getLastModulePlayed(username)
 {
-  return score.findOne({username: username}).then((user) => {
+  return score.findOne({$and: [{username: username}, {lastPlayed: true}]}).then((user) => {
     if(user != null)
     {
       return user.module;
     }
   });
+}
+
+// update last played status for user
+async function updateLastPlayedStatus(username, module)
+{
+  return score.updateOne({$and: [{username: username}, {lastPlayed: true}]}, {lastPlayed: false})
+              .then((data) => {
+                if(data != null)
+                {
+                  return true;
+                }
+              })
 }
 
 // game modules
@@ -63,6 +75,8 @@ router.get('/3xploit-modules', isAuthenticated, async (req, res) => {
   });
 });
 
+/* ********** RANSOMEWARE ROUTES ********************************************************** */
+
 // GET: starts ransomeware module
 router.get('/ransomeware', isAuthenticated, async (req, res) => {
   
@@ -77,7 +91,7 @@ router.get('/ransomeware', isAuthenticated, async (req, res) => {
     layout: 'main',
     title: 'ransomeware',
     style: 'game.css',
-    script: 'game.js',
+    script: 'ransomewareGame.js',
     session: req.session,
     username: req.session.user.username,
     userPrevData: userPreviousData
@@ -102,11 +116,15 @@ router.get('/ransomeware/end', isAuthenticated, async (req, res) => {
         username: username,
         score: receivedScore,
         time: receivedTime,
-        module: "Ransomeware"
+        module: "Ransomeware",
+        lastPlayed: true
       });
 
       // creates new score for the user
       try {
+
+        await updateLastPlayedStatus(username,"Ransomeware");
+
         await newScoreData.save().then((mssg) => {
           console.log('Score Saved Successfully');
           res.render('game/ransomeware/end', {
@@ -123,8 +141,11 @@ router.get('/ransomeware/end', isAuthenticated, async (req, res) => {
         console.log(err);
       }
     } else {
+
+      await updateLastPlayedStatus(username, "Ransomeware");
+
       // updates existing score for the user
-      score.updateOne({ username: username }, { score: receivedScore }).then(async (data) => {
+      score.updateOne({$and: [{ username: username }, {module: "Ransomeware"}]}, { score: receivedScore, lastPlayed: true }).then(async (data) => {
         if (data != null) {
           console.log('Score Updated Successfully');
           res.render('game/ransomeware/end', {
@@ -171,5 +192,128 @@ router.get('/ransomeware/highscore', isAuthenticated, async (req, res) => {
       res.render('leaderboard/leaderboard', { message: 'no results' });
     });
 });
+
+
+/* ********** SESSION HIJACKING ROUTES ********************************************************** */
+
+// GET: starts ransomeware module
+router.get('/sessionhijacking', isAuthenticated, async (req, res) => {
+  
+  var userPreviousData = {
+    lastScore: await getLastScore(req.session.user.username),
+    lastTime: await getLastTimeTaken(req.session.user.username),
+    lastModule: await getLastModulePlayed(req.session.user.username)
+  };
+  
+  // renders appropriate question
+  res.render('game/sessionhijacking/game', {
+    layout: 'main',
+    title: 'sessionhijacking',
+    style: 'game.css',
+    script: 'sessionHijackingGame.js',
+    session: req.session,
+    username: req.session.user.username,
+    userPrevData: userPreviousData
+  });
+});
+
+// GET: Final Score Page
+router.get('/sessionhijacking/end', isAuthenticated, async (req, res) => {
+  var receivedScore = req.query.score;
+  var receivedTime = req.query.time;
+  var username = req.session.user.username;
+
+  var userPreviousData = {
+    lastScore: await getLastScore(req.session.user.username),
+    lastTime: await getLastTimeTaken(req.session.user.username),
+    lastModule: await getLastModulePlayed(req.session.user.username)
+  };
+
+  score.findOne({$and: [{ username: username }, {module: "Session Hijacking"}]}).then(async (data) => {
+    if (data == null) {
+      var newScoreData = new score({
+        username: username,
+        score: receivedScore,
+        time: receivedTime,
+        module: "Session Hijacking",
+        lastPlayed: true
+      });
+
+      // creates new score for the user
+      try {
+
+        await updateLastPlayedStatus(username,"Session Hijacking");
+
+        await newScoreData.save().then((mssg) => {
+          console.log('Score Saved Successfully');
+          res.render('game/sessionhijacking/end', {
+            layout: 'main',
+            title: 'end',
+            style: 'game.css',
+            script: 'end.js',
+            session: req.session,
+            username: req.session.user.username,
+            userPrevData: userPreviousData
+          });
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+
+      await updateLastPlayedStatus(username, "Session Hijacking");
+
+      // updates existing score for the user
+      score.updateOne({$and: [{ username: username }, {module: "Session Hijacking"}]}, { score: receivedScore, lastPlayed: true }).then(async (data) => {
+        if (data != null) {
+          console.log('Score Updated Successfully');
+          res.render('game/sessionhijacking/end', {
+            layout: 'main',
+            title: 'end',
+            style: 'game.css',
+            script: 'end.js',
+            session: req.session,
+            username: req.session.user.username,
+            userPrevData: userPreviousData
+          });
+        }
+      });
+    }
+  });
+});
+
+// GET: leaderboard
+router.get('/sessionhijacking/highscore', isAuthenticated, async (req, res) => {
+  
+  var userPreviousData = {
+    lastScore: await getLastScore(req.session.user.username),
+    lastTime: await getLastTimeTaken(req.session.user.username),
+    lastModule: await getLastModulePlayed(req.session.user.username)
+  };
+
+  // sorts the scores first, if tie, then sorts by time taken by user
+  score
+    .find({module: "Session Hijacking"})
+    .sort({ score: -1, time: 1 })
+    .exec()
+    .then((data) => {
+      data = data.map((value) => value.toObject());
+      res.render('leaderboard/leaderboard', {
+        scores: data,
+        layout: 'main',
+        title: 'leaderboard',
+        style: 'leaderboard.css',
+        userPrevData: userPreviousData,
+        module: "sessionhijacking"
+      });
+    })
+    .catch((err) => {
+      res.render('leaderboard/leaderboard', { message: 'no results' });
+    });
+});
+
+
+
+
 
 module.exports = router;

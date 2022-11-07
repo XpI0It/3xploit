@@ -23,6 +23,10 @@ const ScoreSchema = new Schema({
   module: {
     type: 'string',
     required: true
+  },
+  lastPlayed: {
+    type: 'boolean',
+    required: true
   }
 });
 var Score = mongoose.model('Score', ScoreSchema);

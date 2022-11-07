@@ -35,7 +35,7 @@ function updateTimer() {
   } else timer.innerHTML = 'Time Left: ' + startingTime;
 }
 
-fetch('/res/questions.json', {
+fetch('/res/ransomewareQuestions.json', {
   //mode: 'no-cors',
   headers: { content_type: 'application/json' },
 })

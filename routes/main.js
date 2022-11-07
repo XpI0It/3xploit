@@ -5,7 +5,7 @@ const score = require('../schemas/ScoreSchema');
 // get last score of user
 async function getLastScore(username) 
 {
-  return score.findOne({username: username}).then((user) => {
+  return score.findOne({$and: [{username: username}, {lastPlayed: true}]}).then((user) => {
     if(user != null)
     {
       return user.score;
@@ -16,24 +16,36 @@ async function getLastScore(username)
 // get last time taken by user
 async function getLastTimeTaken(username)
 {
-  return score.findOne({username: username}).then((user) => {
+  return score.findOne({$and: [{username: username}, {lastPlayed: true}]}).then((user) => {
     if(user != null)
     {
       return user.time;
     }
   });
 }
-
 // get last module played by user
 async function getLastModulePlayed(username)
 {
-  return score.findOne({username: username}).then((user) => {
+  return score.findOne({$and: [{username: username}, {lastPlayed: true}]}).then((user) => {
     if(user != null)
     {
       return user.module;
     }
   });
 }
+
+// // update last played status for user
+// async function updateLastPlayedStatus(username, module)
+// {
+//   return score.updateOne({$and: [{username: username}, {lastPlayed: true}]}, {lastPlayed: false})
+//               .then((data) => {
+//                 if(data != null)
+//                 {
+//                   return true;
+//                 }
+//               })
+// }
+
 
 //home
 router.get('/', async (req, res) => {

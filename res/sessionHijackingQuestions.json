@@ -1,0 +1,31 @@
+[
+    {
+      "question": "Inside which HTML element do we put the style files??",
+      "choice1": "<style>",
+      "choice2": "<javascript>",
+      "choice3": "<js>",
+      "choice4": "<scripting>",
+      "answer": 1,
+      "answerText": "<style>"
+    },
+    {
+      "question": "What is the correct syntax for referring to an external style file called 'style.css'?",
+      "choice1": "<style href='xxx.js'>",
+      "choice2": "<style name='xxx.js'>",
+      "choice3": "<style src='xxx.js'>",
+      "choice4": "<style file='xxx.js'>",
+      "answer": 3,
+      "answerText": "<style src='xxx.js'>"
+    },
+    {
+      "question": " How do you write 'Hello World' in an alert box?",
+      "choice1": "msgBox('Hello World');",
+      "choice2": "alertBox('Hello World');",
+      "choice3": "msg('Hello World');",
+      "choice4": "alert('Hello World');",
+      "answer": 4,
+      "answerText": "alert('Hello World');"
+    }
+  ]
+  
+  
