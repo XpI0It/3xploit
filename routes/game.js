@@ -153,7 +153,7 @@ router.get('/ransomeware/highscore', isAuthenticated, async (req, res) => {
 
   // sorts the scores first, if tie, then sorts by time taken by user
   score
-    .find()
+    .find({module: "Ransomeware"})
     .sort({ score: -1, time: 1 })
     .exec()
     .then((data) => {
@@ -163,7 +163,8 @@ router.get('/ransomeware/highscore', isAuthenticated, async (req, res) => {
         layout: 'main',
         title: 'leaderboard',
         style: 'leaderboard.css',
-        userPrevData: userPreviousData
+        userPrevData: userPreviousData,
+        module: "Ransomeware"
       });
     })
     .catch((err) => {
