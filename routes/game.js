@@ -77,6 +77,17 @@ router.get('/3xploit-modules', isAuthenticated, async (req, res) => {
 
 /* ********** RANSOMEWARE ROUTES ********************************************************** */
 
+// GET: Info for ransomeware module
+router.get('/ransomeware/info', (req, res) => {
+  res.render('game/ransomeware/info', {
+    layout: 'main',
+    title: 'ransomewareInfo',
+    style: 'style.css',
+    script: 'scrolldown.js',
+    module: 'RANSOMEWARE'
+  });
+})
+
 // GET: starts ransomeware module
 router.get('/ransomeware', isAuthenticated, async (req, res) => {
   
@@ -195,6 +206,17 @@ router.get('/ransomeware/highscore', isAuthenticated, async (req, res) => {
 
 
 /* ********** SESSION HIJACKING ROUTES ********************************************************** */
+
+// GET: Info for ransomeware module
+router.get('/sessionhijacking/info', (req, res) => {
+  res.render('game/sessionHijacking/info', {
+    layout: 'main',
+    title: 'sessionhijackingInfo',
+    style: 'style.css',
+    script: 'scrolldown.js',
+    module: 'SESSION HIJACKING'
+  });
+})
 
 // GET: starts ransomeware module
 router.get('/sessionhijacking', isAuthenticated, async (req, res) => {
