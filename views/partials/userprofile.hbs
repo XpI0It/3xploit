@@ -8,20 +8,28 @@
   </a>
 
   <figcaption>
-    <div class="fig-author-figure-title">User: <span>{{username}}</span> </div>
-    <div class="fig-author-figure-title">Last score: <span>{{userPrevData.lastScore}}</span> </div>
-    <div class="fig-author-figure-title">Time taken: <span>{{userPrevData.lastTime}}</span> </div>
+    <div class="fig-author-figure-title">Hello <span>{{username}} 👋</span> </div>
+    <div class="fig-author-figure-title">Last score: <span>{{userPrevData.lastScore}} pt.</span> </div>
+    <div class="fig-author-figure-title">Time taken: <span>{{userPrevData.lastTime}} sec.</span> </div>
     <div class="fig-author-figure-title">Module Played: <span>{{userPrevData.lastModule}}</span> </div>
+
   </figcaption>
+
 </figure>
 {{!-- USER PROFILE --}}
-<div class="registerBtn">
+<div class="user-profile-btn">
   <a href="/users/logout">Log Out</a>
 </div>
 
-{{else}}
-<div class="registerBtn">
-  <a href="/users/register">Register </a>
+<div class="leaderboard-btn">
+  <div class="user-profile-btn" style="right: 4rem;">
+    <a href="/game/ransomeware/highscore">Leaderboard</a>
+  </div>
+</div>
 
+
+{{else}}
+<div class="user-profile-btn">
+  <a href="/users/register">Register </a>
 </div>
 {{/if}}

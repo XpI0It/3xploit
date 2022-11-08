@@ -1,4 +1,4 @@
-.registerBtn a {
+.user-profile-btn a {
   /*Button Text Style*/
   font-family: 'Inconsolata', 'Helvetica', 'Arial', sans-serif;
   letter-spacing: 1.5px;
@@ -17,11 +17,11 @@
   cursor: pointer;
 }
 
-.registerBtn a {
+.user-profile-btn a {
   text-decoration: none;
 }
 
-.registerBtn a:after {
+.user-profile-btn a:after {
   text-decoration: none;
   position: absolute;
   width: 100%;
@@ -41,16 +41,23 @@
   -o-transition: all 0.5s;
 }
 
-.registerBtn a:hover {
+.user-profile-btn a:hover {
   top: 3rem;
   right: 4rem;
   text-decoration: none;
 }
 
-.registerBtn a:hover:after {
+.user-profile-btn a:hover:after {
   top: -3px;
   right: -4px;
   text-decoration: none;
+}
+
+.leaderboard-btn {
+  position: absolute;
+  top: 0rem;
+  right: 10rem;
+  cursor: pointer;
 }
 
 .fir-clickcircle {
@@ -92,7 +99,7 @@ html.wf-active .fir-image-figure .fig-author-figure-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 400;
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.835);
+  color: #fff;
   margin-top: 2px;
 }
 
