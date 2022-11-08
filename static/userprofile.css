@@ -1,40 +1,35 @@
 .registerBtn a {
-  /*placement for code pen*/
-
   /*Button Text Style*/
   font-family: 'Inconsolata', 'Helvetica', 'Arial', sans-serif;
-  font-size: inherit;
-
-  font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   text-decoration: none;
   /*Button Color & Border*/
   border: 4px solid #3c14d0;
   color: #3c14d0;
   background: #fff;
-  outline: none;
   /*Position, Display, Size*/
   position: absolute;
   top: 3rem;
   right: 4rem;
-  /* put it to the corner */
 
   padding: 15px 10px 14px;
   cursor: pointer;
 }
 
+.registerBtn a {
+  text-decoration: none;
+}
+
 .registerBtn a:after {
-  /*Make a:after be as big as button*/
+  text-decoration: none;
   position: absolute;
   width: 100%;
   height: 100%;
-  /*Give a:after Border & Background color*/
+
   border: 2px solid #35ff9e;
   background-color: #3c14d0;
-  /* hue 259 in hexa */
 
-  /*Decide Location of a:after..this gives a           bottom right shadow*/
   right: 4px;
   top: 4px;
   /*Place a:after behind button*/
@@ -49,18 +44,13 @@
 .registerBtn a:hover {
   top: 3rem;
   right: 4rem;
+  text-decoration: none;
 }
 
 .registerBtn a:hover:after {
   top: -3px;
   right: -4px;
-}
-
-:root {
-  --fir-font-article: 'adobe-garamond-pro', 'Times New Roman', Times;
-  --fir-font-header: 'foco', Helvetica;
-  --fir-blue-twitter-alpha: rgba(85, 172, 238, 0.6);
-  --fir-color-grey: rgba(0, 0, 0, 0.4);
+  text-decoration: none;
 }
 
 .fir-clickcircle {
@@ -71,6 +61,7 @@
 }
 
 .fir-image-figure {
+  text-decoration: none;
   margin: 0;
   display: flex;
   align-items: center;
@@ -129,4 +120,10 @@ html.wf-active .fir-image-figure .fig-author-figure-title {
   top: 0;
   left: 0;
   animation: fadeInFadeOut 2s infinite;
+}
+
+.fig-author-figure-title > span {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #35ff9e;
 }

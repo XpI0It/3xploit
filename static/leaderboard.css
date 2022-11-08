@@ -1,102 +1,95 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap');
 
 body {
-    background-color: black;
-    font-family: 'Fredoka', sans-serif;
-    background: url("https://images.unsplash.com/photo-1560583306-bd304a162229?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    /* make the backround img dark */
-    background-color: rgba(0, 0, 0.5, 0.7);
-    /* make the backround img dark */
-    background-blend-mode: overlay;
+  background-color: black;
+  font-family: 'Fredoka', sans-serif;
+  background: url('https://images.unsplash.com/photo-1560583306-bd304a162229?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  /* make the backround img dark */
+  background-color: rgba(0, 0, 0.5, 0.7);
+  /* make the backround img dark */
+  background-blend-mode: overlay;
 }
 
 section {
-    margin: 70px;
+  margin: 70px;
 }
 
 h1 {
-    font-size: 30px;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 300;
-    text-align: center;
-    margin-bottom: 15px;
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 table {
-    width: 100%;
-    table-layout: fixed;
-
+  width: 100%;
+  table-layout: fixed;
 }
 
 .tbl-header {
-    background-color: rgba(255, 255, 255, 0.3);
-    background: -webkit-linear-gradient(left, #21af74, #20a2ad);
-    background: linear-gradient(to right, #21af74, #20a2ad);
-    border-radius: 2rem 2rem 0 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  background: -webkit-linear-gradient(left, #21af74, #20a2ad);
+  background: linear-gradient(to right, #21af74, #20a2ad);
+  border-radius: 2rem 2rem 0 0;
 }
 
 .tbl-content {
-    height: 500px;
-    overflow-x: auto;
+  height: 500px;
+  overflow-x: auto;
 
-    border-width: 5px;
-    border-style: solid;
-    border-image:
-        linear-gradient(to bottom,
-            #21af74,
-            #20a2ad) 1 100%;
-    /* add border on top and bottom */
-    border-top: 1px solid #20a2ad;
+  border-width: 5px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, #21af74, #20a2ad) 1 100%;
+  /* add border on top and bottom */
+  border-top: 1px solid #20a2ad;
 
-
-    border-radius: 0 0 2rem 2rem;
+  border-radius: 0 0 2rem 2rem;
 }
 
 th {
-    padding: 20px 15px;
-    text-align: left;
-    font-weight: 700;
-    font-size: 27px;
-    color: #fff;
-    text-transform: uppercase;
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 27px;
+  color: #fff;
+  text-transform: uppercase;
 }
 
 td {
-    padding: 22px;
-    text-align: left;
-    vertical-align: middle;
-    font-weight: 800;
-    font-size: 20px;
-    color: #fff;
-    border-bottom: solid 1px rgba(255, 255, 255, 0.1);
-    background-color: rgb(26, 25, 25);
+  padding: 22px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 800;
+  font-size: 20px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+  background-color: rgb(26, 25, 25);
 }
 
 #rank {
-    color: rgb(233, 233, 36);
-
+  color: rgb(233, 233, 36);
 }
 
 #time {
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 100;
-    font-style: italic;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 100;
+  font-style: italic;
 }
 
-
 .title {
-    font-size: 1.2rem;
-    font-weight: 500;
-    letter-spacing: .5rem;
-    font-family: 'Fredoka', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.5rem;
+  font-family: 'Fredoka', sans-serif;
 }
 
 #highlight {
-    color: #35FF9E;
-    font-weight: bolder;
+  color: #35ff9e;
+  font-weight: bolder;
 }

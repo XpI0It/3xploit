@@ -2,16 +2,16 @@
 {{#if username}}
 {{!-- USER PROFILE --}}
 <figure class="fir-image-figure">
-  <a class="fir-imageover" rel="noopener" href="#">
+  <a class="fir-imageover" rel="noopener" href="/">
     <img class="fir-author-image fir-clickcircle"
       src="https://icons.veryicon.com/png/256/business/bitcoin-icon/anonymous-4.png" alt="userprofile">
   </a>
 
   <figcaption>
-    <div class="fig-author-figure-title">{{username}}</div>
-    <div class="fig-author-figure-title">Last score: {{userPrevData.lastScore}}</div>
-    <div class="fig-author-figure-title">Time taken: {{userPrevData.lastTime}}</div>
-    <div class="fig-author-figure-title">Module Played: {{userPrevData.lastModule}}</div>
+    <div class="fig-author-figure-title">User: <span>{{username}}</span> </div>
+    <div class="fig-author-figure-title">Last score: <span>{{userPrevData.lastScore}}</span> </div>
+    <div class="fig-author-figure-title">Time taken: <span>{{userPrevData.lastTime}}</span> </div>
+    <div class="fig-author-figure-title">Module Played: <span>{{userPrevData.lastModule}}</span> </div>
   </figcaption>
 </figure>
 {{!-- USER PROFILE --}}

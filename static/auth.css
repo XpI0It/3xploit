@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap');
 
 #highlight {
-  color: #35FF9E;
+  color: #35ff9e;
 }
 
 body {
@@ -10,7 +10,8 @@ body {
   display: flex;
   justify-content: center;
   height: 90vh;
-  background: url("https://images.unsplash.com/photo-1609524400197-21b5840e038b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80") no-repeat center center fixed;
+  background: url('https://images.unsplash.com/photo-1609524400197-21b5840e038b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80')
+    no-repeat center center fixed;
   /* darken the backround color */
   background-color: rgba(0, 0, 0, 0.7);
   background-blend-mode: overlay;
@@ -21,13 +22,16 @@ body {
   border-radius: 20px;
   box-sizing: border-box;
 
-  padding: 20px;
-  width: 370px;
+  padding: 25px;
+  width: 375px;
   border-color: #303245;
   border-style: solid;
-  border-width: 4px;
-}
+  border-width: 5px;
 
+  /* box-shadow: 0 0 10px 0 #303245; */
+  /* box shadow neon green */
+  box-shadow: 0 0 4px 0 #35ff9e;
+}
 
 .title {
   color: #eee;
@@ -81,8 +85,8 @@ body {
   width: 50px;
 }
 
-.input:focus~.cut,
-.input:not(:placeholder-shown)~.cut {
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {
   transform: translateY(8px);
 }
 
@@ -90,7 +94,7 @@ body {
   color: #65657b;
   font-family: sans-serif;
   left: 20px;
-  line-height: 14px;
+  line-height: 12px;
   pointer-events: none;
   position: absolute;
   transform-origin: 0 50%;
@@ -98,20 +102,18 @@ body {
   top: 20px;
 }
 
-.input:focus~.placeholder,
-.input:not(:placeholder-shown)~.placeholder {
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {
   transform: translateY(-30px) translateX(5px) scale(0.75);
 }
 
-.input:not(:placeholder-shown)~.placeholder {
+.input:not(:placeholder-shown) ~ .placeholder {
   color: #808097;
 }
 
-.input:focus~.placeholder {
+.input:focus ~ .placeholder {
   color: #dc2f55;
 }
-
-
 
 /* == BUTTON == */
 div .submit {
@@ -134,6 +136,7 @@ div .submit {
   text-transform: uppercase;
   width: 200px;
   overflow: hidden;
+  z-index: 1;
   border-radius: 40px;
   cursor: pointer;
   /* button border */
@@ -142,7 +145,7 @@ div .submit {
 
 .submit button span {
   position: relative;
-  color: #35FF9E;
+  color: #35ff9e;
   font-size: 17px;
   font-family: 'Fredoka', sans-serif;
   letter-spacing: 4px;
@@ -154,26 +157,20 @@ div .submit {
   line-height: 1px;
 }
 
-
-
-
 button .liquid {
-
   position: absolute;
-  top: -80px;
+  top: -90px;
   left: 0;
   width: 200px;
   height: 200px;
   background: #4f36dd;
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
-  transition: .5s;
-  border: 0
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+  border: 0;
 }
-
 
 button .liquid::after,
 button .liquid::before {
-
   content: '';
   width: 200%;
   height: 200%;
@@ -182,41 +179,32 @@ button .liquid::before {
   left: 50%;
   transform: translate(-50%, -75%);
   background: #000;
-  border: 0
+  border: 0;
+  border-radius: 50%;
 }
 
-
-
 button .liquid::before {
-
   border-radius: 45%;
   background: rgba(20, 20, 20, 1);
   animation: animate 5s linear infinite;
   border: 0;
 }
 
-
 button .liquid::after {
-
   border-radius: 40%;
-  background: rgba(20, 20, 20, .5);
+  background: rgba(20, 20, 20, 0.5);
   animation: animate 10s linear infinite;
   border: 0;
 }
 
-
-
-
 button:hover .liquid {
-
-  top: -100px;
+  top: -150px;
 }
 
 /* onclick */
 .submit button:active {
   /* press effect */
-  transform: scale(.98);
-
+  transform: scale(0.98);
 }
 
 @keyframes animate {
@@ -229,7 +217,6 @@ button:hover .liquid {
   }
 }
 
-
 /* Change the white to any color */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -238,6 +225,8 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #303245 inset !important;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  /* safari box shadow */
+  -webkit-text-fill-color: #eee !important;
 }
 
 /*Change text in autofill textbox*/
@@ -250,7 +239,7 @@ input:-webkit-autofill {
   font-size: 14px;
   margin-top: 20px;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-weight: 50;
+  font-weight: 250;
   /* center */
   display: flex;
   justify-content: center;
@@ -258,21 +247,17 @@ input:-webkit-autofill {
 }
 
 .have-account a {
-  color: #35FF9E;
+  color: #35ff9e;
   text-decoration: none;
   padding: 5px 10px;
-  text-decoration: underline;
+  font-weight: 700;
 }
 
 .have-account a:hover {
-  color: #fff;
+  color: #35ff9e;
+
   text-decoration: underline;
 }
-
-
-
-
-
 
 /* === Error displayer === */
 
@@ -295,7 +280,6 @@ input:-webkit-autofill {
 .form-dsp-error i {
   color: #dc2f55;
   font-size: larger;
-
 }
 
 .form-dsp-error span {
