@@ -4,7 +4,7 @@
 
   
 
-   <a href="https://exploitt.herokuapp.com">Demo</a> . <a href="">Blog</a>
+   <a href="https://exploitt.herokuapp.com">Demo</a> . <a href="https://dev.to/saminarp/building-a-cybersecurity-game-with-threejs-inspired-by-googles-interland-36k6">Blog</a>
 </div>
 
 
