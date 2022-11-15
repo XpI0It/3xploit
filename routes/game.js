@@ -156,7 +156,7 @@ router.get('/ransomeware/end', isAuthenticated, async (req, res) => {
       await updateLastPlayedStatus(username, "Ransomeware");
 
       // updates existing score for the user
-      score.updateOne({$and: [{ username: username }, {module: "Ransomeware"}]}, { score: receivedScore, lastPlayed: true }).then(async (data) => {
+      score.updateOne({$and: [{ username: username }, {module: "Ransomeware"}]}, { score: receivedScore, time: receivedTime, lastPlayed: true }).then(async (data) => {
         if (data != null) {
           console.log('Score Updated Successfully');
           res.render('game/ransomeware/end', {
@@ -286,7 +286,7 @@ router.get('/sessionhijacking/end', isAuthenticated, async (req, res) => {
       await updateLastPlayedStatus(username, "Session Hijacking");
 
       // updates existing score for the user
-      score.updateOne({$and: [{ username: username }, {module: "Session Hijacking"}]}, { score: receivedScore, lastPlayed: true }).then(async (data) => {
+      score.updateOne({$and: [{ username: username }, {module: "Session Hijacking"}]}, { score: receivedScore, time: receivedTime, lastPlayed: true }).then(async (data) => {
         if (data != null) {
           console.log('Score Updated Successfully');
           res.render('game/sessionhijacking/end', {
@@ -326,7 +326,7 @@ router.get('/sessionhijacking/highscore', isAuthenticated, async (req, res) => {
         title: 'leaderboard',
         style: 'leaderboard.css',
         userPrevData: userPreviousData,
-        module: "sessionhijacking"
+        module: "Session Hijacking"
       });
     })
     .catch((err) => {
@@ -334,6 +334,135 @@ router.get('/sessionhijacking/highscore', isAuthenticated, async (req, res) => {
     });
 });
 
+
+/* ********** TROJAN HORSE ROUTES ********************************************************** */
+
+// GET: Info for ransomeware module
+router.get('/trojanhorse/info', (req, res) => {
+  res.render('game/trojanhorse/info', {
+    layout: 'main',
+    title: 'trojanhorseInfo',
+    style: 'style.css',
+    script: 'scrolldown.js',
+    module: 'TROJAN HORSE'
+  });
+})
+
+// GET: starts ransomeware module
+router.get('/trojanhorse', isAuthenticated, async (req, res) => {
+  
+  var userPreviousData = {
+    lastScore: await getLastScore(req.session.user.username),
+    lastTime: await getLastTimeTaken(req.session.user.username),
+    lastModule: await getLastModulePlayed(req.session.user.username)
+  };
+  
+  // renders appropriate question
+  res.render('game/trojanhorse/game', {
+    layout: 'main',
+    title: 'trojanhorse',
+    style: 'game.css',
+    script: 'trojanHorseGame.js',
+    session: req.session,
+    username: req.session.user.username,
+    userPrevData: userPreviousData
+  });
+});
+
+// GET: Final Score Page
+router.get('/trojanhorse/end', isAuthenticated, async (req, res) => {
+  var receivedScore = req.query.score;
+  var receivedTime = req.query.time;
+  var username = req.session.user.username;
+
+  var userPreviousData = {
+    lastScore: await getLastScore(req.session.user.username),
+    lastTime: await getLastTimeTaken(req.session.user.username),
+    lastModule: await getLastModulePlayed(req.session.user.username)
+  };
+
+  score.findOne({$and: [{ username: username }, {module: "Trojan Horse"}]}).then(async (data) => {
+    if (data == null) {
+      var newScoreData = new score({
+        username: username,
+        score: receivedScore,
+        time: receivedTime,
+        module: "Trojan Horse",
+        lastPlayed: true
+      });
+
+      // creates new score for the user
+      try {
+
+        await updateLastPlayedStatus(username,"Trojan Horse");
+
+        await newScoreData.save().then((mssg) => {
+          console.log('Score Saved Successfully');
+          res.render('game/trojanhorse/end', {
+            layout: 'main',
+            title: 'end',
+            style: 'game.css',
+            script: 'end.js',
+            session: req.session,
+            username: req.session.user.username,
+            userPrevData: userPreviousData
+          });
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+
+      await updateLastPlayedStatus(username, "Trojan Horse");
+
+      // updates existing score for the user
+      score.updateOne({$and: [{ username: username }, {module: "Trojan Horse"}]}, { score: receivedScore, time: receivedTime, lastPlayed: true }).then(async (data) => {
+        if (data != null) {
+          console.log('Score Updated Successfully');
+          res.render('game/trojanhorse/end', {
+            layout: 'main',
+            title: 'end',
+            style: 'game.css',
+            script: 'end.js',
+            session: req.session,
+            username: req.session.user.username,
+            userPrevData: userPreviousData
+          });
+        }
+      });
+    }
+  });
+});
+
+// GET: leaderboard
+router.get('/trojanhorse/highscore', isAuthenticated, async (req, res) => {
+  
+  var userPreviousData = {
+    lastScore: await getLastScore(req.session.user.username),
+    lastTime: await getLastTimeTaken(req.session.user.username),
+    lastModule: await getLastModulePlayed(req.session.user.username)
+  };
+
+  // sorts the scores first, if tie, then sorts by time taken by user
+  score
+    .find({module: "Trojan Horse"})
+    .sort({ score: -1, time: 1 })
+    .exec()
+    .then((data) => {
+      data = data.map((value) => value.toObject());
+      res.render('leaderboard/leaderboard', {
+        scores: data,
+        layout: 'main',
+        title: 'leaderboard',
+        style: 'leaderboard.css',
+        userPrevData: userPreviousData,
+        module: "Trojan Horse"
+      });
+    })
+    .catch((err) => {
+      res.render('leaderboard/leaderboard', { message: 'no results' });
+    });
+});
 
 
 
