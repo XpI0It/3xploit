@@ -465,6 +465,134 @@ router.get('/trojanhorse/highscore', isAuthenticated, async (req, res) => {
 });
 
 
+/* ********** BRUCE FORCE ATTACK ROUTES ********************************************************** */
+
+// GET: Info for ransomeware module
+router.get('/bruteforce/info', (req, res) => {
+  res.render('game/bruteforce/info', {
+    layout: 'main',
+    title: 'bruteforceInfo',
+    style: 'style.css',
+    script: 'scrolldown.js',
+    module: 'BRUTE FORCE ATTACK'
+  });
+})
+
+// GET: starts ransomeware module
+router.get('/bruteforce', isAuthenticated, async (req, res) => {
+  
+  var userPreviousData = {
+    lastScore: await getLastScore(req.session.user.username),
+    lastTime: await getLastTimeTaken(req.session.user.username),
+    lastModule: await getLastModulePlayed(req.session.user.username)
+  };
+  
+  // renders appropriate question
+  res.render('game/bruteforce/game', {
+    layout: 'main',
+    title: 'bruteforce',
+    style: 'game.css',
+    script: 'bruteForceGame.js',
+    session: req.session,
+    username: req.session.user.username,
+    userPrevData: userPreviousData
+  });
+});
+
+// GET: Final Score Page
+router.get('/bruteforce/end', isAuthenticated, async (req, res) => {
+  var receivedScore = req.query.score;
+  var receivedTime = req.query.time;
+  var username = req.session.user.username;
+
+  var userPreviousData = {
+    lastScore: await getLastScore(req.session.user.username),
+    lastTime: await getLastTimeTaken(req.session.user.username),
+    lastModule: await getLastModulePlayed(req.session.user.username)
+  };
+
+  score.findOne({$and: [{ username: username }, {module: "Brute Force Attack"}]}).then(async (data) => {
+    if (data == null) {
+      var newScoreData = new score({
+        username: username,
+        score: receivedScore,
+        time: receivedTime,
+        module: "Brute Force Attack",
+        lastPlayed: true
+      });
+
+      // creates new score for the user
+      try {
+
+        await updateLastPlayedStatus(username,"Brute Force Attack");
+
+        await newScoreData.save().then((mssg) => {
+          console.log('Score Saved Successfully');
+          res.render('game/bruteforce/end', {
+            layout: 'main',
+            title: 'end',
+            style: 'game.css',
+            script: 'end.js',
+            session: req.session,
+            username: req.session.user.username,
+            userPrevData: userPreviousData
+          });
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+
+      await updateLastPlayedStatus(username, "Brute Force Attack");
+
+      // updates existing score for the user
+      score.updateOne({$and: [{ username: username }, {module: "Brute Force Attack"}]}, { score: receivedScore, time: receivedTime, lastPlayed: true }).then(async (data) => {
+        if (data != null) {
+          console.log('Score Updated Successfully');
+          res.render('game/bruteforce/end', {
+            layout: 'main',
+            title: 'end',
+            style: 'game.css',
+            script: 'end.js',
+            session: req.session,
+            username: req.session.user.username,
+            userPrevData: userPreviousData
+          });
+        }
+      });
+    }
+  });
+});
+
+// GET: leaderboard
+router.get('/bruteforce/highscore', isAuthenticated, async (req, res) => {
+  
+  var userPreviousData = {
+    lastScore: await getLastScore(req.session.user.username),
+    lastTime: await getLastTimeTaken(req.session.user.username),
+    lastModule: await getLastModulePlayed(req.session.user.username)
+  };
+
+  // sorts the scores first, if tie, then sorts by time taken by user
+  score
+    .find({module: "Brute Force Attack"})
+    .sort({ score: -1, time: 1 })
+    .exec()
+    .then((data) => {
+      data = data.map((value) => value.toObject());
+      res.render('leaderboard/leaderboard', {
+        scores: data,
+        layout: 'main',
+        title: 'leaderboard',
+        style: 'leaderboard.css',
+        userPrevData: userPreviousData,
+        module: "Brute Force Attack"
+      });
+    })
+    .catch((err) => {
+      res.render('leaderboard/leaderboard', { message: 'no results' });
+    });
+});
 
 
 module.exports = router;

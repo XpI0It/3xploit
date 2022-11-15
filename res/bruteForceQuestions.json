@@ -1,0 +1,31 @@
+[
+    {
+      "question": "What is full form of HTML ?",
+      "choice1": "Hypertext Marking Language",
+      "choice2": "Hypotext Markup Language",
+      "choice3": "Hypertext Markup Language",
+      "choice4": "Hypotext Marking Language",
+      "answer": 3,
+      "answerText": "Hypertext Markup Language"
+    },
+    {
+      "question": "SQL is which type of database ?",
+      "choice1": "Relational",
+      "choice2": "Relational and Non-Relational",
+      "choice3": "Non-Relational",
+      "choice4": "None of the above",
+      "answer": 1,
+      "answerText": "Relational"
+    },
+    {
+      "question": "Which amongst the following is cryptanalytic attack ?",
+      "choice1": "Trojan Horse",
+      "choice2": "Bruce Force Attack",
+      "choice3": "Ransomeware",
+      "choice4": "Session Hijacking",
+      "answer": 2,
+      "answerText": "Bruce Force Attack"
+    }
+  ]
+  
+  
