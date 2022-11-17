@@ -34,16 +34,16 @@ router.get('/register', isAuthenticated, (req, res) => {
 // Post method for login form
 router.post('/login', async (req, res) => {
   // Accessing data from body
-  var email = req.body.email;
+  var username = req.body.username;
   var password = req.body.password;
 
   // console.log(req.sessionID)
 
   try {
-    user.findOne({ $and: [{ email: email }, { password: password }] }).then((user) => {
+    user.findOne({ $and: [{ username: username }, { password: password }] }).then((user) => {
       if (user != null) {
-        var username = user.username;
-
+        var email = user.email;
+        
         // create a session for user
         req.session.authenticated = true;
         req.session.user = {

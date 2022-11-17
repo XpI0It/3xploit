@@ -35,7 +35,7 @@ function updateTimer() {
   } else timer.innerHTML = 'Time Left: ' + startingTime;
 }
 
-fetch('/res/questions.json', {
+fetch('/res/trojanHorseQuestions.json', {
   //mode: 'no-cors',
   headers: { content_type: 'application/json' },
 })
@@ -70,7 +70,7 @@ getNewQuestion = () => {
     localStorage.setItem('mostRecentScore', score);
     //go to the end page
 
-    return (window.location.href = '/game/ransomeware/end?score=' + score + '&time=' + totalTime);
+    return (window.location.href = '/game/trojanhorse/end?score=' + score + '&time=' + totalTime);
     // this
     // return (location.href = "/game/ransomeware/end");
   }
