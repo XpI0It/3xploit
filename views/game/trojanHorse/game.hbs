@@ -11,9 +11,20 @@
 
 <body>
   {{>userprofile}}
-  <div class="container">
+  <i id="levelNum" style="display: none;">3</i>
+  <div id="loading"
+    style="z-index: 150;position: absolute;width: 100vw;height: 100vh;background-color: burlywood;justify-content: center;">
+    <h2>Loading...</h2>
+  </div>
+  <div id="lostMessage">
+    <span id="message">Game Over</span>
+    <span id="postScore">Score: 0</span>
+    <span id="nextButton">Continue</span>
+    <span id="restartButton">Restart</span>
+  </div>
+  <div class="container" id="container">
+
     <div id="game" class="justify-center flex-column">
-      {{!-- <p id="progressText" class="hud-prefix">Question</p> --}}
       <h2 id="progressText" class=" heading">Question</h2>
 
       <div id="hud">
@@ -29,14 +40,14 @@
           </div>
         </div>
         <div id="hud-item">
+          <p class="hud-prefix">Attempts</p>
+          <h1 class="hud-main-text" id="attempts">3</h1>
+        </div>
+        <div id="hud-item">
           <p class="hud-prefix">Score</p>
           <h1 class="hud-main-text" id="score">0</h1>
         </div>
       </div>
-
-      {{!-- added answer placeholder --}}
-      <h2 class="choice-container" id="answer"></h2>
-
       <h2 id="question">What is the answer to this questions?</h2>
       <div class="choice-container">
         <p class="choice-prefix">A</p>
@@ -56,8 +67,8 @@
       </div>
     </div>
   </div>
-  <script src="/scripts/{{script}}"></script>
-
+  <canvas id="renderer"></canvas>
+  <script type="module" src="/scripts/3game.js"></script>
 </body>
 
 </html>

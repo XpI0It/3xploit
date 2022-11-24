@@ -126,6 +126,7 @@ body {
 
 /* PLAY BUTTON */
 .cybr-btn {
+  z-index: 1000000;
   --primary: hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 1%));
   --shadow-primary: hsl(var(--shadow-primary-hue), 90%, 50%);
   --primary-hue: 0;
@@ -140,42 +141,36 @@ body {
   --border: 2px;
   --shimmy-distance: 5;
   --clip-one: polygon(0 2%, 100% 2%, 100% 95%, 95% 95%, 95% 90%, 85% 90%, 85% 95%, 8% 95%, 0 70%);
-  --clip-two: polygon(
-    0 78%,
-    100% 78%,
-    100% 100%,
-    95% 100%,
-    95% 90%,
-    85% 90%,
-    85% 100%,
-    8% 100%,
-    0 78%
-  );
-  --clip-three: polygon(
-    0 44%,
-    100% 44%,
-    100% 54%,
-    95% 54%,
-    95% 54%,
-    85% 54%,
-    85% 54%,
-    8% 54%,
-    0 54%
-  );
+  --clip-two: polygon(0 78%,
+      100% 78%,
+      100% 100%,
+      95% 100%,
+      95% 90%,
+      85% 90%,
+      85% 100%,
+      8% 100%,
+      0 78%);
+  --clip-three: polygon(0 44%,
+      100% 44%,
+      100% 54%,
+      95% 54%,
+      95% 54%,
+      85% 54%,
+      85% 54%,
+      8% 54%,
+      0 54%);
   --clip-four: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
   --clip-five: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
   --clip-six: polygon(0 40%, 100% 40%, 100% 85%, 95% 85%, 95% 85%, 85% 85%, 85% 85%, 8% 85%, 0 70%);
-  --clip-seven: polygon(
-    0 63%,
-    100% 63%,
-    100% 80%,
-    95% 80%,
-    95% 80%,
-    85% 80%,
-    85% 80%,
-    8% 80%,
-    0 70%
-  );
+  --clip-seven: polygon(0 63%,
+      100% 63%,
+      100% 80%,
+      95% 80%,
+      95% 80%,
+      85% 80%,
+      85% 80%,
+      8% 80%,
+      0 70%);
   /* font-family: 'Cyber', sans-serif; */
   font-family: 'Fredoka', sans-serif;
   letter-spacing: 0.4rem;
@@ -361,6 +356,7 @@ h1 {
 }
 
 @-webkit-keyframes blink {
+
   20%,
   24%,
   55% {
@@ -386,6 +382,7 @@ h1 {
 }
 
 @keyframes blink {
+
   20%,
   24%,
   55% {

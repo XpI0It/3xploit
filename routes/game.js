@@ -76,9 +76,9 @@ router.get('/3xploit-modules', isAuthenticated, async (req, res) => {
 router.get('/ransomeware/info', (req, res) => {
   res.render('game/ransomeware/info', {
     layout: 'main',
-    title: 'ransomewareInfo',
+    title: 'Module : Ransomware',
+    name: 'Ransomware',
     style: 'style.css',
-    script: 'scrolldown.js',
     module: 'RANSOMEWARE',
   });
 });
@@ -225,7 +225,8 @@ router.get('/ransomeware/highscore', isAuthenticated, async (req, res) => {
 router.get('/sessionhijacking/info', (req, res) => {
   res.render('game/sessionHijacking/info', {
     layout: 'main',
-    title: 'sessionhijackingInfo',
+    title: 'Module : Session Hijacking',
+    name: 'Session Hijacking',
     style: 'style.css',
     script: 'scrolldown.js',
     module: 'SESSION HIJACKING',
@@ -357,7 +358,8 @@ router.get('/sessionhijacking/highscore', isAuthenticated, async (req, res) => {
 router.get('/trojanhorse/info', (req, res) => {
   res.render('game/trojanhorse/info', {
     layout: 'main',
-    title: 'trojanhorseInfo',
+    title: 'Module : Trojan Horse',
+    name: 'Trojan Horse',
     style: 'style.css',
     script: 'scrolldown.js',
     module: 'TROJAN HORSE',
@@ -489,7 +491,8 @@ router.get('/trojanhorse/highscore', isAuthenticated, async (req, res) => {
 router.get('/bruteforce/info', (req, res) => {
   res.render('game/bruteforce/info', {
     layout: 'main',
-    title: 'bruteforceInfo',
+    title: 'Module : Brute Force Attack',
+    name: 'Brute Force Attack',
     style: 'style.css',
     script: 'scrolldown.js',
     module: 'BRUTE FORCE ATTACK',
