@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap');
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   font-family: sans-serif;
   margin: 0;
   background-color: rgb(16, 16, 16);
@@ -15,12 +11,9 @@ body {
   font-family: 'Fredoka', sans-serif;
   margin: 0;
   padding: 0;
+
 }
 
-/* username */
-#username {
-  color: white;
-}
 
 .choice-container {
   display: flex;
@@ -38,6 +31,7 @@ body {
   box-shadow: 0 0.4rem 1.4rem 0 rgba(24, 180, 86, 0.5);
   transform: translateY(-0.1rem);
   transition: transform 150ms;
+
 }
 
 .choice-prefix {
@@ -97,7 +91,9 @@ body {
 #hud-item #timer {
   font-size: 3rem;
   color: wheat;
+
 }
+
 
 .timer span {
   font-size: 2.5rem;
@@ -109,6 +105,13 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+
+:root {
+  background-color: #ecf5ff;
+  font-size: 62.5%;
+}
+
 
 h1,
 h2,
@@ -123,7 +126,7 @@ h1 {
   margin-bottom: 5rem;
 }
 
-h1 > span {
+h1>span {
   font-size: 2.4rem;
   font-weight: 500;
 }
@@ -139,20 +142,79 @@ h3 {
   font-weight: 500;
 }
 
-/* UTILITIES */
-
-.container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 2rem;
+/* Game */
+#renderer {
+  position: absolute;
+  z-index: 50;
 }
 
-.container > * {
+.container {
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  display: flex;
+  max-width: 80rem;
+  padding: 2rem;
+  left: 50vw;
+  transform: translateX(-50%) scale(0.8,0.8);
+}
+
+#lostMessage {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  z-index: 200;
+  position: absolute;
+  left: 50vw;
+  top: 10vh;
+  transform: translateX(-50%);
+}
+
+#lostMessage>#message {
+  color: red;
+  font-size: 72px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+#lostMessage>#postScore {
+  color: lightsalmon;
+  font-size: 72px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+#nextButton {
+  cursor: pointer;
+  padding: 12px;
+  background-color: darkblue;
+  color: white;
+  font-size: 32px;
+  border-radius: 3rem;
+  margin-bottom: 12px;
+}
+
+#restartButton {
+  cursor: pointer;
+  padding: 12px;
+  background-color: green;
+  color: white;
+  font-size: 32px;
+  border-radius: 3rem;
+}
+
+#restartButton:hover {
+  background-color: rgb(0, 66, 0);
+}
+
+#nextButton:hover {
+  background-color: rgb(0, 0, 46);
+}
+
+
+/* UTILITIES */
+
+.container>* {
   width: 100%;
 }
 
@@ -228,6 +290,7 @@ input::placeholder {
 #question {
   color: rgb(255, 255, 255);
 }
+
 /* ------------------ Highscore ----------------------------------------------------------------*/
 
 #highScoresList {
@@ -245,9 +308,10 @@ input::placeholder {
   transform: scale(1.025);
 }
 
+
 .heading {
   font-size: 5vw;
-  text-shadow: 4px 4px 0px #35ff9e;
+  text-shadow: 4px 4px 0px #35FF9E;
   mix-blend-mode: screen;
   animation: fadeIn 2.5s linear forwards;
   text-align: center;
@@ -255,8 +319,9 @@ input::placeholder {
 
 @keyframes fadeIn {
   0% {
-    opacity: 0;
+    opacity: 0
   }
+
   100% {
     opacity: 1;
   }
