@@ -1,30 +1,29 @@
 [
   {
-    "question": "Inside which HTML element do we put the JavaScript??",
-    "choice1": "<script>",
-    "choice2": "<javascript>",
-    "choice3": "<js>",
-    "choice4": "<scripting>",
-    "answer": 1,
-    "answerText": "<script>"
-  },
-  {
-    "question": "What is the correct syntax for referring to an external script called 'xxx.js'?",
-    "choice1": "<script href='xxx.js'>",
-    "choice2": "<script name='xxx.js'>",
-    "choice3": "<script src='xxx.js'>",
-    "choice4": "<script file='xxx.js'>",
+    "question": "Employees of one of the IT giants are not able to access files on their network and the company has received a random call demanding for 1 million USD in exchange of the company’s data. What could possibly be happened with the company’s network?",
+    "choice1": "Brute Force attack",
+    "choice2": "Session Hijacking",
+    "choice3": "Ransomware attack",
+    "choice4": "Man-in-the-middle attack",
     "answer": 3,
-    "answerText": "<script src='xxx.js'>"
+    "answerText": "Ransomware attack"
   },
   {
-    "question": " How do you write 'Hello World' in an alert box?",
-    "choice1": "msgBox('Hello World');",
-    "choice2": "alertBox('Hello World');",
-    "choice3": "msg('Hello World');",
-    "choice4": "alert('Hello World');",
+    "question": "As an organization, what measures can be taken to minimize the damage that can be caused in case of a ransomware attack?",
+    "choice1": "Encrypt as much network as possible",
+    "choice2": "Keep network in one single segment",
+    "choice3": "Divide organization network into multiple segments",
+    "choice4": "Both A and C",
     "answer": 4,
-    "answerText": "alert('Hello World');"
+    "answerText": "Both A and C"
+  },
+  {
+    "question": "Which of the following are possible instances which can increase the chances of ransomware attack?",
+    "choice1": "Opening or closing a pop-up note on a web browser",
+    "choice2": "Clicking a legitimate advertising site",
+    "choice3": "Opening email attachments or downloading a ZIP file through email",
+    "choice4": "All of the above",
+    "answer": 4,
+    "answerText": "All of the above"
   }
 ]
-

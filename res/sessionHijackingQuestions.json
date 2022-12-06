@@ -1,31 +1,38 @@
 [
-    {
-      "question": "Inside which HTML element do we put the style files??",
-      "choice1": "<style>",
-      "choice2": "<javascript>",
-      "choice3": "<js>",
-      "choice4": "<scripting>",
-      "answer": 1,
-      "answerText": "<style>"
-    },
-    {
-      "question": "What is the correct syntax for referring to an external style file called 'style.css'?",
-      "choice1": "<style href='xxx.js'>",
-      "choice2": "<style name='xxx.js'>",
-      "choice3": "<style src='xxx.js'>",
-      "choice4": "<style file='xxx.js'>",
-      "answer": 3,
-      "answerText": "<style src='xxx.js'>"
-    },
-    {
-      "question": " How do you write 'Hello World' in an alert box?",
-      "choice1": "msgBox('Hello World');",
-      "choice2": "alertBox('Hello World');",
-      "choice3": "msg('Hello World');",
-      "choice4": "alert('Hello World');",
-      "answer": 4,
-      "answerText": "alert('Hello World');"
-    }
-  ]
-  
-  
+  {
+    "question": "Which of the following is the way of session hijacking?",
+    "choice1": "Brute force",
+    "choice2": "Maleware",
+    "choice3": "Session fixation",
+    "choice4": "All of the above",
+    "answer": 4,
+    "answerText": "All of the above"
+  },
+  {
+    "question": "You shop online at home. You are suddenly called away while browsing your favorite items on the website, and your user has been logged in on the shopping website on your computer. This behavior could lead you to which of the following attacks?",
+    "choice1": "Session Hijacking",
+    "choice2": "Ransomware",
+    "choice3": "Trojan Horse",
+    "choice4": "None of the above",
+    "answer": 1,
+    "answerText": "Session Hijacking"
+  },
+  {
+    "question": "Which of the following session hijacking exploit is a browser extension developed for Firefox?",
+    "choice1": "CookieCadger",
+    "choice2": "DroidSheep",
+    "choice3": "Firesheep",
+    "choice4": "WhatsApp sniffer",
+    "answer": 3,
+    "answerText": "Firesheep"
+  },
+  {
+    "question": "How can you minimize the possibility of being attacked by session hijacking?",
+    "choice1": "Only use free public WiFi in places you frequent enter",
+    "choice2": "Create a long complex session password. Use it for many website",
+    "choice3": "Download a free old version of security software",
+    "choice4": "Log out the website after you are done using the website",
+    "answer": 4,
+    "answerText": "Log out the website after you are done using the website"
+  }
+]
