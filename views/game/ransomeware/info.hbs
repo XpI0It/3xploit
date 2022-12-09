@@ -9,45 +9,101 @@
   <title>{{title}}</title>
 </head>
 
-<body>
+<body class="h-screen overflow-auto overscroll-contain">
+  {{!-- <section class="bg-gray-900 text-white" style="height: 100vh;"> --}}
+    {{!-- section needs to cover entire page --}}
+    <section class="bg-gray-900 text-white h-full overflow-auto	overscroll-contain">
+      <div class="  overflow-auto	overscroll-contain">
+        <div class="mx-auto max-w-3xl text-center overflow-auto overscroll-contain">
+          <br><br><br>
+          <h2
+            class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl h-full overflow-auto ">
+            {{name}}
 
-  <section class="bg-gray-900 text-white">
-    <div class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
-      <div class="mx-auto max-w-3xl text-center">
-        <h2
-          class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
-          {{name}}
+            <span class="sm:block"> Module </span>
+          </h2>
 
-          <span class="sm:block"> Module </span>
-        </h2>
+          <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed">
 
-        <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed">
-          Attackers are planning a <i class="text-sky-400/100">ransomware</i> attack on the city's hospital. Hundreds of
-          important files and
-          information
-          of patients will come under the control of the cyber attackers if their plan succeeds and demand a ransom from
-          the victims in the form of payment to restore access.
-        </p>
+            The city is experiencing a massive brute force attack on the cursor e-commerce platform. Millions of
+            customers
+            are affected. Customers used the same password across multiple platforms and a lot of them used weak
+            password
+            that were easily guessed.
+            Brute force attack is a type of cyberattack where attackers guess the password to gain access to personal
+            accounts of users. They use a lot of sophisticated software and tools to do the guesswork for them quickly
+            and
+            efficiently.
 
-        <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed text-sky-400/100" style="margin-top: 20px;">
-          You are tasked with preventing such attacks from occurring. But first, you need to learn some basics of
-          ransomware.
-
-        </p>
-        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          </p>
 
 
-          <a href="/game/ransomeware">
-            <button class="cybr-btn">
-              Play
-              <span class="cybr-btn__glitch">Play_</span>
-            </button>
-          </a>
+          <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed">
 
+            The city is experiencing a massive brute force attack on the cursor e-commerce platform. Millions of
+            customers
+            are affected. Customers used the same password across multiple platforms and a lot of them used weak
+            password
+            that were easily guessed.
+            Brute force attack is a type of cyberattack where attackers guess the password to gain access to personal
+            accounts of users. They use a lot of sophisticated software and tools to do the guesswork for them quickly
+            and
+            efficiently.
+
+          </p>
+
+          <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed">
+
+            The city is experiencing a massive brute force attack on the cursor e-commerce platform. Millions of
+            customers
+            are affected. Customers used the same password across multiple platforms and a lot of them used weak
+            password
+            that were easily guessed.
+            Brute force attack is a type of cyberattack where attackers guess the password to gain access to personal
+            accounts of users. They use a lot of sophisticated software and tools to do the guesswork for them quickly
+            and
+            efficiently.
+
+          </p>
+
+
+          <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed">
+
+            The city is experiencing a massive brute force attack on the cursor e-commerce platform. Millions of
+            customers
+            are affected. Customers used the same password across multiple platforms and a lot of them used weak
+            password
+            that were easily guessed.
+            Brute force attack is a type of cyberattack where attackers guess the password to gain access to personal
+            accounts of users. They use a lot of sophisticated software and tools to do the guesswork for them quickly
+            and
+            efficiently.
+
+          </p>
+
+
+
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed text-sky-400/100" style="margin-top: 20px;">
+              You are tasked with preventing such attacks from occurring. But first, you need to learn some basics of
+              brute force attacks.
+            </p>
+
+            <a href="/game/bruteforce">
+              <button class="cybr-btn">
+                Play
+                <span class="cybr-btn__glitch">Play_</span>
+              </button>
+            </a>
+
+            {{!-- INFO page --}}
+
+          </div>
+          <br><br><br>
+          <span class="hscroll-line"></span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
 </body>
 
