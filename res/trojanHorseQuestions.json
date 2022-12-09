@@ -1,31 +1,29 @@
 [
-    {
-      "question": "What is full form of HTML ?",
-      "choice1": "Hypertext Marking Language",
-      "choice2": "Hypotext Markup Language",
-      "choice3": "Hypertext Markup Language",
-      "choice4": "Hypotext Marking Language",
-      "answer": 3,
-      "answerText": "Hypertext Markup Language"
-    },
-    {
-      "question": "MongoDB is which type of database ?",
-      "choice1": "Relational",
-      "choice2": "Relational and Non-Relational",
-      "choice3": "Non-Relational",
-      "choice4": "None of the above",
-      "answer": 3,
-      "answerText": "Non-Relational"
-    },
-    {
-      "question": " How do you write 'Hello World' in an alert box?",
-      "choice1": "msgBox('Hello World');",
-      "choice2": "alertBox('Hello World');",
-      "choice3": "msg('Hello World');",
-      "choice4": "alert('Hello World');",
-      "answer": 4,
-      "answerText": "alert('Hello World');"
-    }
-  ]
-  
-  
+  {
+    "question": "You are suspecting that you might have installed a malware on your computer. What are the signs??",
+    "choice1": "Overall lag of the computer ",
+    "choice2": "Unrecognizable files, website redirects and unresponsiveness ",
+    "choice3": "webcam suddenly turns on for no apparent reason",
+    "choice4": "All of the above ",
+    "answer": 4,
+    "answerText": "All of the above "
+  },
+  {
+    "question": "You just received an email with an attachment. The emails seem to be about some sort of promotion from your favorite clothing store. You are asked to download the attachment and get store credits if you forward the email to 5 friends. What do you do?",
+    "choice1": "Check the sender of the email and check if the email is from a legitimate source. If in doubt, report it as spam and delete the email.",
+    "choice2": "Forward the email to 5 friends immediately for store credits.",
+    "choice3": "Download the attachment",
+    "choice4": "Move the email to trash immediately. ",
+    "answer": 1,
+    "answerText": "Check the sender of the email and check if the email is from a legitimate source. If in doubt, report it as spam and delete the email."
+  },
+  {
+    "question": "How do you best describe what remote access trojans can do?",
+    "choice1": "Once access is gained, the hacker can use the infected machine for a number of illegal activities",
+    "choice2": "A special type of trojan horse ",
+    "choice3": "A weaker type of trojan horse ",
+    "choice4": "None of the above  ",
+    "answer": 1,
+    "answerText": "Once access is gained, the hacker can use the infected machine for a number of illegal activities"
+  }
+]
