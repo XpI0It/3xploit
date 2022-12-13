@@ -68,6 +68,9 @@ The game has a `leaderboard` feature. In local development, you can view the lea
 
 The following image is a screenshot of the leaderboard. 
 
+<img width="2063" alt="CleanShot 2022-12-13 at 01 04 52@2x" src="https://user-images.githubusercontent.com/71259399/207239688-695156d0-0768-4681-9cd6-41025962db90.png">
+
+
 
 ### Hierarchical Structure of the Project 📁 
 
