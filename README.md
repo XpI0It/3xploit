@@ -44,6 +44,21 @@ git clone https://github.com/XpI0It/3xploit && cd 3xploit
 ```sh
 npm install 
 ```
+The following dependencies are installed: 
+
+```json
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "express-session": "^1.17.3",
+    "mongoose": "^6.6.5",
+    "nodemon": "^2.0.13",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.24.0",
+    "sessions": "^0.0.2-7"
+  },
+```
 3. Start the server on port 8080.
 ```sh
 npm run dev
