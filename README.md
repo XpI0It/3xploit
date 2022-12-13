@@ -52,13 +52,18 @@ npm run dev
 ### Hierarchical Structure of the Project 📁 
 
 The following image is a hierarchical structure of the project and shows a brief description of each directory. 
-<!--  folder hierarchy pic here -->
+
+<img width="779" alt="CleanShot 2022-12-13 at 00 55 25@2x" src="https://user-images.githubusercontent.com/71259399/207237999-789fc5d4-79ae-4d26-8c84-45b6cc762350.png">
+
+
 ## Game Modules 🎮
 
 The game has 4 modules. Each module has a different set of questions and a different environment. Hovering over the module will display a brief description of the module and display `Play Now` button to start the game.
 
-<!-- modules pic here -->
+<img width="1796" alt="CleanShot 2022-12-13 at 00 44 26@2x" src="https://user-images.githubusercontent.com/71259399/207237838-0faab9cc-f646-44a7-a5a4-3ae3c0c8e156.png">
+
 
 Clicking on the `Play Now` button will display an information page about the module and at the very bottom of the page, there is a `Play` button to start the game. 
 
-<!-- button pic here -->
+<img width="597" alt="CleanShot 2022-12-13 at 00 48 45@2x" src="https://user-images.githubusercontent.com/71259399/207237829-32469774-11ba-42ac-aa68-3d0b0a49e2e3.png">
+
