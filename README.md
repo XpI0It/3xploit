@@ -49,6 +49,26 @@ npm install
 npm run dev
 ```
 
+### User Accounts 👤
+
+The game has a `login` and `signup` feature. In local development, you can create a user account by simply clicking the `Play` button on the home page. Or you can click on the `Register` button on the top right corner to create an account.
+
+For testing purposes, you can use the following credentials to login. 
+
+```sh
+username: coffee
+password: coffee123
+```
+
+### Leaderboard 🏆
+
+The game has a `leaderboard` feature. In local development, you can view the leaderboard by clicking on the `Leaderboard` button on the top right corner.
+
+> **Note**: The leaderboard is only available for users who have created an account and logged in. 
+
+The following image is a screenshot of the leaderboard. 
+
+
 ### Hierarchical Structure of the Project 📁 
 
 The following image is a hierarchical structure of the project and shows a brief description of each directory. 
